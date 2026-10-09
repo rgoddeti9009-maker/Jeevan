@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow"><meta name="referrer" content="strict-origin-when-cross-origin"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jeevan Control Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050b17;--card:#0b1730;--ln:#12e0ff55;--c:#12e0ff;--o:#ff9933;--t:#e6f6ff;--m:#8fb3c9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#050b17}}
+:root[data-theme="dark"]{--bg:#050b17}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--t);font:17px/1.5 Rajdhani,system-ui,sans-serif;overflow-x:hidden;
+background-image:linear-gradient(#12e0ff12 1px,transparent 1px),linear-gradient(90deg,#12e0ff12 1px,transparent 1px);background-size:44px 44px}
+h1,h2,h3,.f{font-family:Orbitron,system-ui,sans-serif;letter-spacing:.04em}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;background:#050b17ee;border-bottom:1px solid var(--ln);backdrop-filter:blur(8px)}
+.logo{font-weight:900;color:var(--c);font-size:.95rem}.logo b{color:var(--o)}
+.links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.links a{padding:8px 11px;border:1px solid transparent;border-radius:8px;font-weight:600;white-space:nowrap}
+.links a:hover,.links a.on{border-color:var(--c);color:var(--c)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:0 20px;border:1px solid var(--c);border-radius:10px;background:#12e0ff1a;color:var(--c);font:700 .85rem Orbitron,sans-serif;cursor:pointer;touch-action:manipulation;transition:.2s}
+.btn:hover,.btn:active{background:var(--c);color:#041018;box-shadow:0 0 22px var(--c)}
+.btn.o{border-color:var(--o);color:var(--o);background:#ff99331a}.btn.o:hover{background:var(--o);color:#1b1000;box-shadow:0 0 22px var(--o)}
+.btn.r{border-color:#ff4d6d;color:#ff4d6d;background:#ff4d6d1a;min-height:38px;padding:0 12px}.btn.r:hover{background:#ff4d6d;color:#fff;box-shadow:0 0 18px #ff4d6d}
+section{padding:54px 16px;max-width:1100px;margin:auto}
+.hero{min-height:88vh;display:grid;align-content:center;gap:18px;position:relative}
+.hero:before{content:"";position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--c),transparent);box-shadow:0 0 18px var(--c);animation:scan 5s linear infinite}
+@keyframes scan{0%{top:0}100%{top:100%}}
+.tag{display:inline-block;padding:4px 12px;border:1px solid var(--ln);border-radius:20px;color:var(--c);font-size:.8rem;width:fit-content}
+.tag i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2dff9a;margin-right:6px;animation:bl 1.2s infinite}@keyframes bl{50%{opacity:.2}}
+h1{font-size:clamp(1.7rem,7vw,3.4rem);line-height:1.15;margin:0}h1 span{color:var(--c);text-shadow:0 0 18px var(--c)}
+#type{min-height:1.6em;color:var(--o);font:700 1.05rem Orbitron,sans-serif}#type:after{content:"▌";animation:bl 1s infinite}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.bot{width:120px;height:120px;border:2px solid var(--c);border-radius:28px;position:relative;box-shadow:0 0 30px #12e0ff55,inset 0 0 20px #12e0ff33;animation:fl 3s ease-in-out infinite}
+.bot:before,.bot:after{content:"";position:absolute;top:38px;width:22px;height:22px;border-radius:50%;background:var(--c);box-shadow:0 0 16px var(--c);animation:bk 4s infinite}
+.bot:before{left:24px}.bot:after{right:24px}.bot i{position:absolute;left:30px;right:30px;bottom:24px;height:6px;border-radius:4px;background:var(--o);box-shadow:0 0 10px var(--o)}
+@keyframes fl{50%{transform:translateY(-10px)}}@keyframes bk{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.card{background:linear-gradient(160deg,var(--card),#07101f);border:1px solid var(--ln);border-radius:14px;padding:16px;position:relative}
+.card:before{content:"";position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:2px solid var(--c);border-left:2px solid var(--c);border-radius:14px 0 0 0}
+.stat b{display:block;font:900 1.7rem Orbitron,sans-serif;color:var(--c)}.stat span{color:var(--m)}
+h2{font-size:clamp(1.3rem,5vw,2rem);margin:0 0 6px;color:var(--c)}.sub{color:var(--m);margin:0 0 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.pk{display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(16px);transition:.5s}.pk.in{opacity:1;transform:none}
+.pk h3{margin:0;font-size:1rem}.pk .d{color:var(--m);flex:1}.pk .meta{display:flex;justify-content:space-between;gap:8px;color:var(--o);font-weight:600;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.chips button{min-height:40px}.chips .on{background:var(--c);color:#041018}
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}.svc .card h3{margin:0 0 4px;font-size:.95rem;color:var(--o)}
+input,select,textarea{width:100%;min-height:46px;padding:10px 12px;background:#06122a;color:var(--t);border:1px solid var(--ln);border-radius:10px;font:inherit}
+textarea{min-height:80px}label{display:block;font-size:.85rem;color:var(--m);margin:10px 0 4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:520px){.two{grid-template-columns:1fr}}
+footer{padding:30px 16px 90px;text-align:center;color:var(--m);border-top:1px solid var(--ln)}
+.fab{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px;z-index:30}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.4rem;border:1px solid var(--c);background:#050b17;box-shadow:0 0 16px #12e0ff66}
+.fab a.w{border-color:#25d366;box-shadow:0 0 16px #25d36688}
+#adm{position:fixed;inset:0;z-index:40;background:#02060dee;display:none;overflow:auto;padding:16px}#adm.on{display:block}
+#adm .box{max-width:1000px;margin:auto}#adm{background:var(--bg)}.br{display:flex;align-items:center;gap:8px;margin:7px 0}.br i{display:block;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--c),var(--o))}#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--card);border:1px solid var(--c);padding:10px 16px;border-radius:10px;z-index:50;display:none}
+.li{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--ln)}.li div{min-width:0}.li small{color:var(--m)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+nav select{min-height:40px;width:auto;padding:0 8px;font:600 .8rem Rajdhani,sans-serif}
+.ab{width:54px;height:54px;border-radius:50%;font-size:1.5rem;border:1px solid var(--o);background:#050b17;box-shadow:0 0 16px #ff993388;cursor:pointer}
+#aip{position:fixed;right:10px;left:10px;bottom:calc(200px + env(safe-area-inset-bottom,0px));max-width:400px;margin-left:auto;height:min(460px,calc(100dvh - 280px));display:none;flex-direction:column;background:var(--card);border:1px solid var(--c);border-radius:16px;z-index:35;overflow:hidden;box-shadow:0 0 30px #12e0ff55}#aip.on{display:flex}
+#aih{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 6px 14px;background:#12e0ff22;font:700 .85rem Orbitron,sans-serif}
+#am{flex:1;overflow:auto;padding:10px;display:flex;flex-direction:column;gap:8px}.m{max-width:85%;padding:8px 12px;border-radius:12px;white-space:pre-wrap}.m.b{background:#12e0ff1f;border:1px solid var(--ln);align-self:flex-start}.m.u{background:#ff99332a;border:1px solid #ff993366;align-self:flex-end}
+#ac{display:flex;gap:6px;flex-wrap:wrap;padding:0 10px 8px}#ac button{min-height:36px;padding:0 10px;font-size:.7rem}
+#aif{display:flex;gap:6px;padding:8px;border-top:1px solid var(--ln)}#aif .btn{min-width:48px;padding:0 10px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.tabs .btn{min-height:40px;padding:0 12px;font-size:.72rem}.tabs .on{background:var(--c);color:#041018}
+.out{word-break:break-all;background:#06122a;border:1px solid var(--ln);border-radius:10px;padding:10px;margin-top:10px;font-size:.85rem}
+.kv{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.kv span{padding:4px 10px;border:1px solid var(--ln);border-radius:20px;font-size:.85rem}
+</style></head><body>
+<div id="adm" class="on"><div class="box card">
+<div class="li" style="border:0"><h2 class="f" style="margin:0;font-size:1.05rem">🤖 JEEVAN CONTROL CENTER</h2><div class="row"><button class="btn r" id="lk2" type="button">🔒 LOCK</button></div></div>
+<div class="tabs" id="tb"></div><div id="mp"></div></div></div>
+<div id="toast"></div>
+<script>var $=function(i){return document.getElementById(i)};
+var DEF=[
+{id:"d1",n:"Shirdi to Shani Shingnapur",c:"1-Day Round Trip",d:"Darshan at Shani Shingnapur with a comfortable return to Shirdi the same day.",p:""},
+{id:"d2",n:"Nashik – Trimbakeshwar",c:"1-Day Round Trip",d:"Trimbakeshwar Jyotirlinga and Nashik sightseeing in one day.",p:""},
+{id:"d3",n:"Shirdi to Pune Drop",c:"One-way",d:"Direct one-way cab drop from Shirdi to Pune, about 190 km.",p:""},
+{id:"d4",n:"Shirdi to Mumbai Drop",c:"One-way",d:"Direct one-way cab drop from Shirdi to Mumbai, about 250 km.",p:""},
+{id:"d5",n:"Ashtavinayak Yatra",c:"Pilgrimage",d:"Multi-day journey covering the eight Ganpati temples of Maharashtra.",p:""},
+{id:"d6",n:"3 and 5 Jyotirlinga Tour",c:"Pilgrimage",d:"Guided Jyotirlinga circuit with vehicle and driver for the full trip.",p:""},
+{id:"d7",n:"Mahabaleshwar and Lonavala",c:"Multi-day",d:"Hill-station getaway with scenic points and relaxed stays.",p:""},
+{id:"d8",n:"Konkan Coastal Tour",c:"Multi-day",d:"Beaches, forts and coastal temples along the Konkan route.",p:""},
+{id:"d9",n:"Ajanta, Ellora and Grishneshwar",c:"Multi-day",d:"Cave temples near Sambhajinagar and the Grishneshwar Jyotirlinga, with vehicle and driver for the whole trip.",p:""},
+{id:"d10",n:"Pandharpur and Tuljapur Darshan",c:"Pilgrimage",d:"Vitthal darshan at Pandharpur and Tuljabhavani darshan at Tuljapur in one pilgrimage trip.",p:""},
+{id:"d11",n:"Kolhapur Mahalaxmi Darshan",c:"Pilgrimage",d:"Comfortable round trip from Shirdi for Mahalaxmi darshan at Kolhapur.",p:""},
+{id:"d12",n:"Mumbai Siddhivinayak Darshan",c:"Pilgrimage",d:"Round trip from Shirdi to Mumbai for Siddhivinayak darshan and city stops.",p:""},
+{id:"d13",n:"Pune and Lonavala Tour",c:"Multi-day",d:"Pune sightseeing and Lonavala hill-station stops on a relaxed multi-day plan.",p:""},
+{id:"d14",n:"Shirdi Local Sightseeing",c:"1-Day Round Trip",d:"Vehicle on hire for temple visits and sightseeing around Shirdi.",p:""},
+{id:"d15",n:"Shirdi Hotel Stay Package",c:"Hotels",d:"Hotel stay in Shirdi arranged for your budget and group size, with optional pickup.",p:""},
+{id:"d16",n:"Nashik Panchavati and Saptashrungi",c:"Pilgrimage",d:"Nashik temple circuit with a visit to Saptashrungi Devi, planned around your time.",p:""},
+{id:"d17",n:"Bhimashankar Jyotirlinga Tour",c:"Pilgrimage",d:"Round trip from Shirdi for Bhimashankar Jyotirlinga darshan with vehicle and driver.",p:""},
+{id:"d18",n:"Shegaon Gajanan Maharaj Darshan",c:"Pilgrimage",d:"Pilgrimage trip from Shirdi to Shegaon for Gajanan Maharaj darshan.",p:""},
+{id:"d19",n:"Goa Holiday Package",c:"Multi-day",d:"Beach holiday from Shirdi to Goa with a vehicle and driver for the whole trip.",p:""},
+{id:"d20",n:"Ganpatipule and Ratnagiri",c:"Multi-day",d:"Coastal Konkan trip covering Ganpatipule temple and beach stops.",p:""},
+{id:"d21",n:"Sambhajinagar City and Daulatabad",c:"1-Day Round Trip",d:"City sightseeing and Daulatabad Fort in one day from Shirdi.",p:""},
+{id:"d22",n:"Mumbai Airport Pickup and Drop",c:"One-way",d:"Cab between Shirdi and Mumbai airport, timed to your flight.",p:""},
+{id:"d23",n:"Pune Airport Pickup and Drop",c:"One-way",d:"Cab between Shirdi and Pune airport, timed to your flight.",p:""},
+{id:"d24",n:"Shirdi Airport Pickup and Drop",c:"One-way",d:"Pickup or drop at Shirdi airport to your hotel or temple area.",p:""},
+{id:"d25",n:"Tempo Traveller Group Hire",c:"Group Hire",d:"Roomy vehicle on hire for family groups, devotees and wedding parties.",p:""},
+{id:"d26",n:"Custom Tour Planning",c:"Custom",d:"Tell us your route, dates and group size and we will plan a tour for you.",p:""}];
+var XT={d1:["1 Day","Popular"],d2:["1 Day","Popular"],d3:["One-way",""],d4:["One-way",""],d5:["2-3 Days","Popular"],d6:["Custom",""],d7:["2-3 Days",""],d8:["3-4 Days",""],d9:["2-3 Days",""],d10:["2 Days",""],d11:["2 Days",""],d12:["1-2 Days",""],d13:["2-3 Days",""],d14:["Per day",""],d15:["Per night",""],d16:["1-2 Days",""],d17:["1-2 Days",""],d18:["1-2 Days",""],d19:["4-5 Days","New"],d20:["3-4 Days","New"],d21:["1 Day",""],d22:["One-way",""],d23:["One-way",""],d24:["One-way",""],d25:["Per day","New"],d26:["Flexible",""]};
+DEF.forEach(function(x){var m=XT[x.id];if(m){x.t=m[0];x.b=m[1]}});
+var P=[],db=null,KEY="jeevan_pk_v1",cat="All",WA="919511188188";
+function toast(m){var t=$("toast");t.textContent=m;t.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(function(){t.style.display="none"},2200)}
+function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+function load(){try{var r=localStorage.getItem(KEY);if(r)return JSON.parse(r)}catch(e){}return null}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}
+if(db){db.doc("site/packages").set({list:P}).then(function(){$("sv").textContent="Saved for all visitors."}).catch(function(){$("sv").textContent="Saved on this device only (editing needs owner access)."})}
+else $("sv").textContent="Saved on this device."}
+function wa(t){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(t),"_blank","noopener")}
+function render(){}
+function track(){}
+var LS={g:function(k){try{return localStorage.getItem(k)}catch(e){return null}},s:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+/* ===== security ===== */
+function sani(v,n){return String(v==null?"":v).replace(/[<>\u0000-\u001f]/g," ").replace(/\s+/g," ").trim().slice(0,n||200)}
+function ea(v){return esc(v).replace(/"/g,"&quot;")}
+function hs(v){var x=5381;for(var i=0;i<v.length;i++)x=((x<<5)+x+v.charCodeAt(i))|0;return""+x}
+function slog(m){var a=[];try{a=JSON.parse(LS.g("jsl")||"[]")}catch(e){}a.unshift({t:Date.now(),m:m});LS.s("jsl",JSON.stringify(a.slice(0,60)))}
+var RL=[];function rl(){var n=Date.now();RL=RL.filter(function(t){return n-t<60000});if(RL.length>=3)return false;RL.push(n);return true}
+var MT="dash",EP=null,IT=null;
+function lock(){AUTH=false;clearTimeout(IT);mgr()}
+function idle(){clearTimeout(IT);IT=setTimeout(function(){lock();toast("Auto-locked")},600000)}
+function openMgr(){AUTH=false;MT="dash";EP=null;EB=null;mgr()}
+$("lk2").onclick=function(){lock();slog("Manager locked");toast("Locked")};
+$("adm").addEventListener("click",idle);
+/* ===== manager views ===== */
+var CATS=["One-way","1-Day Round Trip","Multi-day","Pilgrimage","Hotels","Group Hire","Custom"];
+function mgr(){if(!AUTH){$("tb").innerHTML="";$("mp").innerHTML=vLogin();return}var T2=[["dash","📊 Dashboard"],["bk","📒 Bookings"],["ai","🤖 AI Copilot"],["pk","📦 Packages"],["cmp","📣 Campaigns"],["ld","👥 Leads"],["sec","🛡 Security"]];
+$("tb").innerHTML=T2.map(function(t){return'<button type="button" class="btn'+(MT===t[0]?" on":"")+'" data-t="'+t[0]+'">'+t[1]+'</button>'}).join("");
+$("mp").innerHTML=({bk:vBk,dash:vDash,ai:vAi,pk:vPk,cmp:vCmp,ld:vLd,sec:vSec})[MT]();if(MT==="ld")loadLeads();if(MT==="dash")loadDash();if(MT==="bk")loadBk()}
+function vPk(){IMG=null;var e=EP?P.filter(function(x){return x.id===EP})[0]:null;
+return'<form id="af"><input type="hidden" id="aid" value="'+ea(e?e.id:"")+'"><label for="an">Package name</label><input id="an" maxlength="80" required value="'+ea(e?e.n:"")+'"><div class="two"><div><label for="ac">Category</label><select id="ac">'+CATS.map(function(c){return"<option"+(e&&e.c===c?" selected":"")+">"+c+"</option>"}).join("")+'</select></div><div><label for="ap">Price (optional)</label><input id="ap" maxlength="12" placeholder="e.g. 4500" value="'+ea(e?e.p:"")+'"></div></div><label for="ad">Description</label><textarea id="ad" maxlength="400" required>'+esc(e?e.d:"")+'</textarea><div class="two"><div><label for="at">Duration</label><input id="at" maxlength="20" placeholder="1 Day" value="'+ea(e&&e.t||"")+'"></div><div><label for="ab">Badge</label><select id="ab">'+["","Popular","New","Best value"].map(function(b){return'<option value="'+b+'"'+(e&&e.b===b?" selected":"")+'>'+(b||"None")+'</option>'}).join("")+'</select></div></div><label for="ah">Highlights (comma separated)</label><input id="ah" maxlength="200" placeholder="Same-day return, Driver included" value="'+ea(e&&e.h||"")+'"><label for="aim">Photo (optional)</label><input id="aim" type="file" accept="image/*">'+(e&&e.i?'<img id="aip2" alt="" style="max-width:160px;border-radius:8px;margin-top:8px;display:block" src="'+e.i+'"><button class="btn r" type="button" data-b="ri" style="margin-top:8px;min-height:36px">REMOVE PHOTO</button>':'<img id="aip2" alt="" style="max-width:160px;display:none;margin-top:8px;border-radius:8px">')+'<div class="row" style="margin-top:12px"><button class="btn o" type="submit">'+(e?"✔ SAVE CHANGES":"＋ ADD PACKAGE")+'</button><button class="btn" type="button" data-b="aw">✨ AI WRITE</button>'+(e?'<button class="btn" type="button" data-a="cx">CANCEL</button>':'<button class="btn r" type="button" data-a="rs">RESET LIST</button>')+'</div></form><h3 class="f" style="margin:20px 0 0;font-size:.9rem">CURRENT PACKAGES ('+P.length+')</h3>'+P.map(function(x){return'<div class="li"><div><b>'+esc(x.n)+'</b><br><small>'+esc(x.c)+(x.p?" · ₹"+esc(x.p):"")+'</small></div><div class="row"><button class="btn" type="button" data-a="ed" data-id="'+ea(x.id)+'" style="min-height:38px;padding:0 12px">EDIT</button><button class="btn r" type="button" data-a="del" data-id="'+ea(x.id)+'">DELETE</button></div></div>'}).join("")+'<p class="sub" style="margin-top:12px;font-size:.85rem" id="sv"></p>'+syncCard()}
+function vCmp(){var sl=[];try{sl=JSON.parse(LS.g("jc")||"[]")}catch(e){}
+return'<p class="sub" style="font-size:.85rem;margin:0 0 6px">Ad tracking IDs (Google tag, Google Ads conversion, Meta Pixel) are set inside the customer website file, in its SETTINGS block.</p><label for="l0">Customer website address</label><input id="l0" maxlength="200" placeholder="https://yourname.netlify.app/" value="'+ea(LS.g("jsite")||"")+'">'+'<h3 class="f" style="font-size:.9rem;margin:22px 0 0">AD LINK BUILDER</h3><form id="lf" novalidate><div class="two"><div><label for="l1">Platform</label><select id="l1"><option value="g">Google Ads</option><option value="m">Meta Ads (Facebook / Instagram)</option></select></div><div><label for="l2">Campaign name</label><input id="l2" maxlength="40" required placeholder="diwali-shirdi-pune"></div></div><label for="l3">Landing on</label><select id="l3"><option value="">Top of page</option>'+P.map(function(x){return'<option value="'+ea(x.id)+'">'+esc(x.n)+'</option>'}).join("")+'</select><div class="row" style="margin-top:12px"><button class="btn o" type="submit">GENERATE LINK</button></div></form><div id="lo"></div>'+
+(sl.length?'<h3 class="f" style="font-size:.9rem;margin:18px 0 0">SAVED LINKS</h3>'+sl.map(function(x){return'<div class="out">'+esc(x)+'</div>'}).join(""):"")+
+'<p class="sub" style="font-size:.85rem;margin-top:14px">Every visit with these links records source, campaign and click ID. The ID is stored on the lead and sent with every WhatsApp enquiry. Google and Meta scripts load only on your own domain, not on claude.ai.</p>'}
+function vLd(){return'<form id="imf" class="card" style="margin-bottom:12px"><label for="imfile">Import leads (CSV from Formspree or Google Sheets, or JSON)</label><input id="imfile" type="file" accept=".csv,.json,text/csv,application/json"><div class="row" style="margin-top:10px"><button class="btn o" type="submit">IMPORT</button></div></form><div class="kv" id="lsum"></div><div id="ldl">Loading…</div>'}
+function vSec(){var l=[];try{l=JSON.parse(LS.g("jsl")||"[]")}catch(e){}
+return'<div class="kv"><span>Honeypot: on</span><span>Rate limit: 3 per min</span><span>Input clean-up: on</span><span>Login lock: 5 tries</span><span>Auto-lock: 10 min</span></div><div class="row"><button class="btn" type="button" data-a="pin">CHANGE PASSWORD</button><button class="btn r" type="button" data-a="clog">CLEAR LOG</button></div><h3 class="f" style="font-size:.9rem;margin:16px 0 0">SECURITY LOG</h3>'+(l.length?l.map(function(x){return'<div class="li"><div>'+esc(x.m)+'<br><small>'+new Date(x.t).toLocaleString()+'</small></div></div>'}).join(""):"<p>No events yet.</p>")}
+$("tb").onclick=function(e){var t=e.target.closest("[data-t]");if(t){MT=t.dataset.t;EP=null;mgr()}};
+$("mp").onclick=function(e){var b=e.target.closest("[data-a]");if(!b)return;var a=b.dataset.a,id=b.dataset.id;
+if(a==="ed"){EP=id;mgr();$("an").focus()}
+else if(a==="cx"){EP=null;mgr()}
+else if(a==="del"){var x=P.filter(function(y){return y.id===id})[0];if(x&&confirm("Delete \""+x.n+"\"?")){P=P.filter(function(y){return y.id!==id});save();render();mgr();toast("Package deleted")}}
+else if(a==="rs"){if(confirm("Reset to the default package list?")){P=DEF.slice();save();render();mgr();toast("List reset")}}
+else if(a==="pin"){var n=prompt("New password (min 6 characters)");if(n&&n.length>=6)setPw(n);else if(n)toast("Min 6 characters")}
+else if(a==="clog"){LS.s("jsl","[]");mgr()}
+else if(a==="cp"){var o=$("lo").dataset.u;if(navigator.clipboard)navigator.clipboard.writeText(o).then(function(){toast("Link copied")},function(){toast("Select and copy the link")});else toast("Select and copy the link")}};
+$("mp").onsubmit=function(e){e.preventDefault();var f=e.target.id;
+if(f==="af"){var n=sani($("an").value,80),d=sani($("ad").value,400);if(!n||!d){toast("Name and description needed");return}
+var pr=sani($("ap").value,12).replace(/[^0-9,.]/g,""),id=$("aid").value;
+if(id){P=P.map(function(x){return x.id===id?{id:id,n:n,c:$("ac").value,d:d,p:pr,t:sani($("at").value,20),h:sani($("ah").value,200),b:$("ab").value,i:IMG===null?(x.i||""):IMG}:x});EP=null;toast("Package updated")}
+else{P.push({id:"p"+Date.now(),n:n,c:$("ac").value,d:d,p:pr,t:sani($("at").value,20),h:sani($("ah").value,200),b:$("ab").value,i:IMG||""});toast("Package added")}save();render();mgr()}
+else if(f==="cf"){CFG={ga:sani($("c1").value,20),gads:sani($("c2").value,40),px:sani($("c3").value,20)};LS.s("jcfg",JSON.stringify(CFG));
+if(db){db.doc("site/config").set(CFG).then(function(){toast("IDs saved for all visitors")}).catch(function(){toast("Saved on this device only")})}else toast("Saved on this device only");initAds();slog("Tracking IDs updated")}
+else if(f==="lf"){var nm=sani($("l2").value,40).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");if(!nm){toast("Enter a campaign name");return}
+var g=$("l1").value==="g",pk=$("l3").value,base=sani($("l0").value,200);if(!/^https:\/\//.test(base)){toast("Enter your website address first (https://…)");return}LS.s("jsite",base);
+var u=base+"?utm_source="+(g?"google":"facebook")+"&utm_medium="+(g?"cpc":"paid_social")+"&utm_campaign="+nm+(g?"&utm_term={keyword}&utm_content={creative}":"&utm_term={{adset.name}}&utm_content={{ad.name}}")+(pk?"&p="+encodeURIComponent(pk):"");
+var sl=[];try{sl=JSON.parse(LS.g("jc")||"[]")}catch(x){}sl.unshift(u);LS.s("jc",JSON.stringify(sl.slice(0,10)));
+$("lo").dataset.u=u;$("lo").innerHTML='<div class="out">'+esc(u)+'</div><div class="row" style="margin-top:8px"><button class="btn" type="button" data-a="cp">COPY LINK</button></div>';track("link_built",{platform:g?"google":"meta"})}};
+/* ===== control center: data, dashboard, leads, copilot ===== */
+var STS=["New","Contacted","Quoted","Booked","Lost"];
+async function getLeads(){var a=[];try{a=JSON.parse(LS.g("jld")||"[]")}catch(e){}
+if(db){try{var q=await db.collection("leads").orderBy("t","desc").limit(200).get();var m={};a.forEach(function(x){m[x.id]=x});q.docs.forEach(function(d){m[d.id]=d.data()});a=Object.keys(m).map(function(k){return m[k]}).sort(function(x,y){return y.t-x.t})}catch(e){}}
+return a}
+function setLead(id,patch){var a=[];try{a=JSON.parse(LS.g("jld")||"[]")}catch(e){}a=a.map(function(x){return x.id===id?Object.assign(x,patch):x});LS.s("jld",JSON.stringify(a));if(db){try{db.collection("leads").doc(id).update(patch).catch(function(){})}catch(e){}}}
+function score(x){var s=0;if(/^[+0-9][0-9 \-]{7,16}$/.test(x.phone||""))s+=20;if(x.pkg&&!/other|custom/i.test(x.pkg))s+=20;if(x.date)s+=15;if(+x.pax>=4)s+=10;if(/google|facebook|instagram|meta/i.test(x.src||"")||x.click)s+=20;if(x.via==="ai")s+=5;return s>=60?"🔥 Hot":s>=35?"Warm":"Cold"}
+function waNum(p){var d=String(p).replace(/\D/g,"");return d.length===10?"91"+d:d}
+function cnt(a,f){var c={};a.forEach(function(x){var k=f(x)||"-";c[k]=(c[k]||0)+1});return c}
+function bars(c){var k=Object.keys(c).sort(function(a,b){return c[b]-c[a]}).slice(0,6),mx=Math.max.apply(null,k.map(function(x){return c[x]}).concat([1]));
+return k.length?k.map(function(x){return'<div class="br"><span style="min-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(x)+'</span><i style="width:'+Math.max(6,Math.round(c[x]/mx*100))+'px;max-width:55%"></i><b>'+c[x]+'</b></div>'}).join(""):"<small>No data yet</small>"}
+function vDash(){return'<div id="dk">Loading…</div>'}
+async function loadDash(){var a=await getLeads();if(!$("dk"))return;var d0=new Date();d0.setHours(0,0,0,0);
+var today=a.filter(function(x){return x.t>=d0.getTime()}).length,booked=a.filter(function(x){return x.status==="Booked"}).length,nw=a.filter(function(x){return!x.status||x.status==="New"}).length,hot=a.filter(function(x){return score(x)==="🔥 Hot"}).length;
+var ev=[];try{ev=JSON.parse(LS.g("jev")||"[]")}catch(e){}var ec=cnt(ev,function(x){return x.ev});
+var days={};for(var i=6;i>=0;i--){var t=new Date(d0);t.setDate(t.getDate()-i);days[t.toLocaleDateString(undefined,{weekday:"short"})]=0}
+a.forEach(function(x){var k=new Date(x.t).toLocaleDateString(undefined,{weekday:"short"});if(k in days&&Date.now()-x.t<6048e5)days[k]++});
+var K=[["Total leads",a.length],["Today",today],["New",nw],["Hot",hot],["Booked",booked],["Conversion",a.length?Math.round(booked/a.length*100)+"%":"0%"]];
+$("dk").innerHTML='<div class="stats">'+K.map(function(k){return'<div class="card stat"><b>'+k[1]+'</b><span>'+k[0]+'</span></div>'}).join("")+'</div><div class="grid" style="margin-top:14px"><div class="card"><h3 class="f" style="font-size:.85rem;margin:0">LEADS BY SOURCE</h3>'+bars(cnt(a,function(x){return x.src}))+'</div><div class="card"><h3 class="f" style="font-size:.85rem;margin:0">TOP PACKAGES</h3>'+bars(cnt(a,function(x){return x.pkg}))+'</div><div class="card"><h3 class="f" style="font-size:.85rem;margin:0">LAST 7 DAYS</h3>'+bars(days)+'</div><div class="card"><h3 class="f" style="font-size:.85rem;margin:0">PIPELINE</h3>'+bars(cnt(a,function(x){return x.status||"New"}))+'</div><div class="card"><h3 class="f" style="font-size:.85rem;margin:0">ACTIVITY (THIS DEVICE)</h3>'+bars(ec)+'</div></div><div class="row" style="margin-top:14px"><button class="btn o" type="button" data-b="aq" data-q="Give me today\'s briefing">🤖 AI BRIEFING</button></div>'}
+function vLd(){return'<div class="kv" id="lsum"></div><div id="ldl">Loading…</div>'}
+async function loadLeads(){var a=await getLeads();if(!$("ldl"))return;var c=cnt(a,function(x){return x.src});
+$("lsum").innerHTML='<span>Total: '+a.length+'</span>'+Object.keys(c).map(function(k){return"<span>"+esc(k)+": "+c[k]+"</span>"}).join("");
+$("ldl").innerHTML=a.length?a.map(function(x){return'<div class="card" style="margin:8px 0"><b>'+esc(x.name)+'</b> · '+score(x)+'<br><small>'+esc(x.pkg||"")+' · '+new Date(x.t).toLocaleString()+' · '+esc(x.src||"")+(x.camp?" / "+esc(x.camp):"")+' · '+esc(x.via||"")+'</small><div class="row" style="margin-top:8px"><select data-st="'+ea(x.id)+'" style="width:auto;min-height:38px">'+STS.map(function(s){return"<option"+((x.status||"New")===s?" selected":"")+">"+s+"</option>"}).join("")+'</select><a class="btn" style="min-height:38px;padding:0 12px" href="tel:'+ea(x.phone)+'">📞</a><button class="btn" type="button" style="min-height:38px;padding:0 12px" data-b="ar" data-id="'+ea(x.id)+'">✍ AI REPLY</button><button class="btn" type="button" style="min-height:38px;padding:0 12px" data-b="lb" data-id="'+ea(x.id)+'">＋ BOOKING</button></div></div>'}).join(""):"No leads yet."}
+function vAi(){return'<div class="out" id="cm" style="min-height:160px;max-height:50vh;overflow:auto;display:flex;flex-direction:column;gap:8px"><div class="m b">Hello! I am your AI operations copilot. I read your leads and packages and suggest what to do next.</div></div><div class="row" style="margin:10px 0">'+[["Daily briefing","Give me today\'s briefing"],["Who to call first","Which leads should I call first and why?"],["Best source","Which traffic source performs best and what should I do?"],["Ad copy","Write 3 short Google Ads headlines and a Meta ad text for our best package"]].map(function(q){return'<button class="btn" type="button" style="min-height:38px;padding:0 12px;font-size:.7rem" data-b="aq" data-q="'+ea(q[1])+'">'+q[0]+'</button>'}).join("")+'</div><form id="aif2" class="row" style="flex-wrap:nowrap"><input id="aq2" maxlength="300" placeholder="Ask about leads, packages, ads…"><button class="btn" type="submit">➤</button></form>'}
+async function copilot(q){var cm=$("cm");if(!cm){MT="ai";mgr();cm=$("cm")}
+var u=document.createElement("div");u.className="m u";u.textContent=q;cm.appendChild(u);var w=document.createElement("div");w.className="m b";w.textContent="…";cm.appendChild(w);cm.scrollTop=1e9;
+var a=await getLeads(),d0=new Date();d0.setHours(0,0,0,0);
+var S={totalLeads:a.length,today:a.filter(function(x){return x.t>=d0.getTime()}).length,byStatus:cnt(a,function(x){return x.status||"New"}),bySource:cnt(a,function(x){return x.src}),byPackage:cnt(a,function(x){return x.pkg}),packages:P.map(function(x){return x.n}),recent:a.slice(0,15).map(function(x){return{name:x.name,pkg:x.pkg,src:x.src,campaign:x.camp,status:x.status||"New",score:score(x),date:x.date||"",pax:x.pax}})};
+try{var sm=window.claude&&await claude.use("sample");if(!sm)throw 0;
+var r=await sm("You are the AI operations manager for Jeevan Tours & Travels, Shirdi. Use ONLY this data and never invent numbers or prices. Answer in under 130 words with clear action items.\nDATA: "+JSON.stringify(S)+"\nQUESTION: "+q,{cache:false});w.textContent=r.text||"No answer."}
+catch(e){w.textContent="AI is not available right now, so here is a summary: "+S.totalLeads+" leads ("+S.today+" today). Pipeline: "+JSON.stringify(S.byStatus)+". Sources: "+JSON.stringify(S.bySource)+". Call the Hot leads first."}
+cm.scrollTop=1e9}
+async function aiReply(id){var a=await getLeads(),x=a.filter(function(y){return y.id===id})[0];if(!x)return;var t="Namaste "+x.name+", thank you for your enquiry about "+(x.pkg||"our tours")+". Please share your travel date and number of passengers and we will confirm the best fare. - Jeevan Tours & Travels, Shirdi";
+toast("Writing reply…");try{var sm=window.claude&&await claude.use("sample");if(sm){var r=await sm("Write a short, warm WhatsApp reply (max 45 words, English, no prices) from Jeevan Tours & Travels, Shirdi to "+x.name+", who enquired about "+(x.pkg||"our tours")+" for date "+(x.date||"not given")+" with "+(x.pax||"?")+" passengers. Ask for any missing detail. Return only the message.",{cache:false});if(r.text)t=sani(r.text,400)}}catch(e){}
+setLead(id,{status:x.status&&x.status!=="New"?x.status:"Contacted"});window.open("https://wa.me/"+waNum(x.phone)+"?text="+encodeURIComponent(t),"_blank","noopener");loadLeads()}
+async function aiWrite(){var n=sani($("an").value,80);if(!n){toast("Type the package name first");return}toast("AI is writing…");
+try{var sm=window.claude&&await claude.use("sample");if(!sm)throw 0;var r=await sm("Write a 2-sentence description (max 40 words, no prices, no invented facts) for a tour package named \""+n+"\" ("+$("ac").value+") from Shirdi. Return only the text.",{cache:false});$("ad").value=sani(r.text,400)}catch(e){toast("AI writer unavailable here")}}
+var _oc=$("mp").onclick,_os=$("mp").onsubmit;
+$("mp").onclick=function(e){var b=e.target.closest("[data-b]");if(!b)return _oc(e);var a=b.dataset.b;
+if(a==="aq"){if(MT!=="ai"){MT="ai";mgr()}copilot(b.dataset.q)}else if(a==="ar")aiReply(b.dataset.id);else if(a==="aw")aiWrite()};
+$("mp").onsubmit=function(e){if(e.target.id==="aif2"){e.preventDefault();var q=sani($("aq2").value,300);if(q){$("aq2").value="";copilot(q)}}else _os(e)};
+$("mp").onchange=function(e){var s=e.target.closest("[data-st]");if(s){setLead(s.dataset.st,{status:s.value});slog("Lead status: "+s.value);toast("Status: "+s.value)}};
+function hr(){if(location.hash==="#manager")openMgr()}window.addEventListener("hashchange",hr);setTimeout(hr,600);
+/* ===== login (username + password) ===== */
+var AUTH=false;
+async function sha(v,salt){try{var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(salt+":"+v));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")}catch(e){return hs(salt+v)}}
+function rs(){try{return Array.from(crypto.getRandomValues(new Uint8Array(12))).map(function(x){return x.toString(16)}).join("")}catch(e){return""+Date.now()}}
+async function setAcc(u,pw){var s=rs();LS.s("jm_u",u);LS.s("jm_s",s);LS.s("jm_h",await sha(pw,s))}
+async function setPw(pw){await setAcc(LS.g("jm_u")||"manager",pw);slog("Password changed");toast("Password changed")}
+function vLogin(){var has=LS.g("jm_h");
+return'<div class="card" style="max-width:420px;margin:20px auto"><h3 class="f" style="margin:0 0 6px;font-size:.95rem">'+(has?"🔐 MANAGER LOGIN":"🆕 CREATE MANAGER ACCOUNT")+'</h3>'+(has?"":'<p class="sub" style="font-size:.85rem">First time here. Choose a username and password for this device.</p>')+
+'<form id="'+(has?"lgf":"lgc")+'" autocomplete="off"><label for="lu">Username</label><input id="lu" maxlength="20" autocapitalize="none" required><label for="lw">Password</label><input id="lw" type="password" maxlength="64" required>'+(has?"":'<label for="lw2">Confirm password</label><input id="lw2" type="password" maxlength="64" required>')+'<div class="row" style="margin-top:14px"><button class="btn o" type="submit">'+(has?"LOGIN":"CREATE ACCOUNT")+'</button></div></form></div>'}
+async function doLogin(e){var f=e.target.id,u=sani($("lu").value,20).toLowerCase(),pw=$("lw").value;
+if(f==="lgc"){if(!/^[a-z0-9_.]{3,20}$/.test(u)){toast("Username: 3-20 letters, numbers, . or _");return}if(pw.length<6){toast("Password needs 6+ characters");return}if(pw!==$("lw2").value){toast("Passwords do not match");return}
+await setAcc(u,pw);slog("Manager account created");AUTH=true;MT="dash";mgr();idle();return}
+if(Date.now()<(+LS.g("jm_t")||0)){toast("Locked for a few minutes");return}
+var ok=u===LS.g("jm_u")&&await sha(pw,LS.g("jm_s")||"")===LS.g("jm_h");
+if(ok){LS.s("jm_f","0");AUTH=true;slog("Manager login: "+u);MT="dash";mgr();idle()}
+else{var n=(+LS.g("jm_f")||0)+1;LS.s("jm_f",""+n);slog("Failed login ("+n+")");if(n>=5){LS.s("jm_t",""+(Date.now()+300000));LS.s("jm_f","0");toast("Too many attempts. Locked 5 minutes.")}else toast("Wrong username or password");$("lw").value=""}}
+/* ===== bookings ===== */
+var BST=["Confirmed","Started","Completed","Cancelled"],BKC=[],EB=null;
+async function getBk(){var a=[];try{a=JSON.parse(LS.g("jbk")||"[]")}catch(e){}
+if(db){try{var q=await db.collection("bookings").limit(300).get();var m={};a.forEach(function(x){m[x.id]=x});q.docs.forEach(function(d){m[d.id]=d.data()});a=Object.keys(m).map(function(k){return m[k]})}catch(e){}}
+return a}
+function putBk(o){var a=[];try{a=JSON.parse(LS.g("jbk")||"[]")}catch(e){}var f=false;a=a.map(function(x){if(x.id===o.id){f=true;return o}return x});if(!f)a.unshift(o);LS.s("jbk",JSON.stringify(a.slice(0,300)));if(db){try{db.collection("bookings").doc(o.id).set(o).catch(function(){})}catch(e){}}}
+function delBk(id){var a=[];try{a=JSON.parse(LS.g("jbk")||"[]")}catch(e){}LS.s("jbk",JSON.stringify(a.filter(function(x){return x.id!==id})));if(db){try{db.collection("bookings").doc(id).delete().catch(function(){})}catch(e){}}}
+function num(v){return +String(v||"").replace(/[^0-9.]/g,"")||0}
+function vBk(){var e=EB?BKC.filter(function(x){return x.id===EB})[0]:null,g=function(k){return ea(e&&e[k]!=null?e[k]:"")};
+return'<form id="bkf"><input type="hidden" id="bid" value="'+g("id")+'"><div class="two"><div><label for="bn1">Customer name</label><input id="bn1" maxlength="60" required value="'+g("name")+'"></div><div><label for="bp1">Phone</label><input id="bp1" type="tel" maxlength="18" required value="'+g("phone")+'"></div></div><div class="two"><div><label for="bk1">Package / service</label><select id="bk1">'+P.map(function(x){return x.n}).concat(["One-way cab (custom route)","Other"]).map(function(n){return"<option"+(e&&e.pkg===n?" selected":"")+">"+esc(n)+"</option>"}).join("")+'</select></div><div><label for="bd1">Travel date</label><input id="bd1" type="date" value="'+g("date")+'"></div></div><div class="two"><div><label for="bu1">Pickup place</label><input id="bu1" maxlength="60" value="'+g("pickup")+'"></div><div><label for="bx1">Passengers</label><input id="bx1" type="number" min="1" value="'+(g("pax")||"2")+'"></div></div><div class="two"><div><label for="bv1">Vehicle</label><input id="bv1" maxlength="40" placeholder="Swift Dzire / Innova" value="'+g("vehicle")+'"></div><div><label for="bw1">Driver</label><input id="bw1" maxlength="40" value="'+g("driver")+'"></div></div><div class="two"><div><label for="ba1">Total amount (₹)</label><input id="ba1" inputmode="decimal" maxlength="10" value="'+g("amount")+'"></div><div><label for="bb1">Advance paid (₹)</label><input id="bb1" inputmode="decimal" maxlength="10" value="'+g("advance")+'"></div></div><label for="bt1">Status</label><select id="bt1">'+BST.map(function(s){return"<option"+((e&&e.status||"Confirmed")===s?" selected":"")+">"+s+"</option>"}).join("")+'</select><label for="bo1">Notes</label><textarea id="bo1" maxlength="300">'+esc(e&&e.notes||"")+'</textarea><div class="row" style="margin-top:12px"><button class="btn o" type="submit">'+(e?"✔ SAVE BOOKING":"＋ ADD BOOKING")+'</button>'+(e?'<button class="btn" type="button" data-b="bc">CANCEL</button>':"")+'</div></form><h3 class="f" style="margin:20px 0 6px;font-size:.9rem">ALL BOOKINGS</h3><div class="kv" id="bks"></div><div id="bkl">Loading…</div>'}
+async function loadBk(){BKC=await getBk();if(!$("bkl"))return;var td=new Date().toISOString().slice(0,10);
+var a=BKC.slice().sort(function(x,y){return(x.date||"9999").localeCompare(y.date||"9999")});
+var live=a.filter(function(x){return x.status!=="Cancelled"}),up=a.filter(function(x){return x.date>=td&&x.status!=="Cancelled"&&x.status!=="Completed"}).length,rev=0,due=0;live.forEach(function(x){rev+=num(x.amount);due+=Math.max(0,num(x.amount)-num(x.advance))});
+$("bks").innerHTML='<span>Total: '+a.length+'</span><span>Upcoming: '+up+'</span><span>Today: '+a.filter(function(x){return x.date===td&&x.status!=="Cancelled"}).length+'</span><span>Revenue: ₹'+rev+'</span><span>Balance due: ₹'+due+'</span>';
+$("bkl").innerHTML=a.length?a.map(function(x){var d=Math.max(0,num(x.amount)-num(x.advance));return'<div class="card" style="margin:8px 0"><b>'+esc(x.name)+'</b> · '+esc(x.pkg||"")+'<br><small>'+esc(x.date||"date TBD")+' · '+esc(x.pickup||"Shirdi")+' · '+esc(x.pax||"")+' pax'+(x.vehicle?" · "+esc(x.vehicle):"")+(x.driver?" · "+esc(x.driver):"")+'<br>₹'+num(x.amount)+' (advance ₹'+num(x.advance)+', due ₹'+d+')'+(x.notes?"<br>"+esc(x.notes):"")+'</small><div class="row" style="margin-top:8px"><select data-bs="'+ea(x.id)+'" style="width:auto;min-height:38px">'+BST.map(function(s){return"<option"+((x.status||"Confirmed")===s?" selected":"")+">"+s+"</option>"}).join("")+'</select><a class="btn" style="min-height:38px;padding:0 12px" href="tel:'+ea(x.phone)+'">📞</a><button class="btn" type="button" style="min-height:38px;padding:0 12px" data-b="bw" data-id="'+ea(x.id)+'">💬 CONFIRM</button><button class="btn" type="button" style="min-height:38px;padding:0 12px" data-b="be" data-id="'+ea(x.id)+'">EDIT</button><button class="btn r" type="button" data-b="bd" data-id="'+ea(x.id)+'">DELETE</button></div></div>'}).join(""):"No bookings yet. Add one above, or tap ＋ BOOKING on a lead."}
+async function leadToBk(id){var a=await getLeads(),x=a.filter(function(y){return y.id===id})[0];if(!x)return;
+putBk({id:"B"+Date.now(),t:Date.now(),name:x.name,phone:x.phone,pkg:x.pkg||"Other",date:x.date||"",pickup:"Shirdi",pax:x.pax||"2",vehicle:"",driver:"",amount:"",advance:"",status:"Confirmed",notes:"From lead ("+(x.src||"direct")+")",lead:x.id});
+setLead(id,{status:"Booked"});slog("Booking created from lead");toast("Booking created");MT="bk";EB=null;mgr()}
+var _oc2=$("mp").onclick,_os2=$("mp").onsubmit,_ch2=$("mp").onchange;
+$("mp").onclick=function(e){var b=e.target.closest("[data-b]");if(b){var a=b.dataset.b,id=b.dataset.id;
+if(a==="lb"){leadToBk(id);return}
+if(a==="be"){EB=id;mgr();$("bn1").focus();return}
+if(a==="bc"){EB=null;mgr();return}
+if(a==="bd"){var x=BKC.filter(function(y){return y.id===id})[0];if(x&&confirm("Delete booking for "+x.name+"?")){delBk(id);toast("Booking deleted");loadBk()}return}
+if(a==="bw"){var k=BKC.filter(function(y){return y.id===id})[0];if(k){window.open("https://wa.me/"+waNum(k.phone)+"?text="+encodeURIComponent("Namaste "+k.name+", your booking with Jeevan Tours & Travels, Shirdi is confirmed.\nService: "+k.pkg+"\nDate: "+(k.date||"to be confirmed")+"\nPickup: "+(k.pickup||"Shirdi")+"\nPassengers: "+(k.pax||"")+(k.vehicle?"\nVehicle: "+k.vehicle:"")+(k.driver?"\nDriver: "+k.driver:"")+(k.amount?"\nAmount: Rs "+num(k.amount)+" (advance Rs "+num(k.advance)+")":"")+"\nThank you!"),"_blank","noopener")}return}}
+_oc2(e)};
+$("mp").onsubmit=function(e){var f=e.target.id;
+if(f==="lgf"||f==="lgc"){e.preventDefault();doLogin(e);return}
+if(f==="bkf"){e.preventDefault();var n=sani($("bn1").value,60),p=sani($("bp1").value,18);if(!n||!/^[+0-9][0-9 \-]{7,16}$/.test(p)){toast("Enter name and a valid phone");return}
+var id=$("bid").value,old=BKC.filter(function(y){return y.id===id})[0]||{};
+putBk(Object.assign({},old,{id:id||"B"+Date.now(),t:old.t||Date.now(),name:n,phone:p,pkg:sani($("bk1").value,80),date:$("bd1").value,pickup:sani($("bu1").value,60),pax:sani($("bx1").value,4),vehicle:sani($("bv1").value,40),driver:sani($("bw1").value,40),amount:""+num($("ba1").value),advance:""+num($("bb1").value),status:$("bt1").value,notes:sani($("bo1").value,300)}));
+toast(id?"Booking updated":"Booking added");EB=null;mgr();return}
+_os2(e)};
+$("mp").onchange=function(e){var s=e.target.closest("[data-bs]");if(s){var x=BKC.filter(function(y){return y.id===s.dataset.bs})[0];if(x){x.status=s.value;putBk(x);toast("Status: "+s.value);loadBk()}return}_ch2(e)};
+/* ===== separate-panel extras: website sync + lead import ===== */
+function syncCard(){return'<h3 class="f" style="margin:22px 0 0;font-size:.9rem">PUBLISH TO WEBSITE</h3><p class="sub" style="font-size:.85rem">The customer website is a separate page. After editing packages, generate packages.json. On free hosting save it next to the website index.html. On claude.ai send it to Claude to paste into the website page.</p><div class="row"><button class="btn o" type="button" data-b="px">GENERATE packages.json</button></div><div id="pxo"></div>'}
+function pkgJson(){return JSON.stringify(P.map(function(x){return{id:x.id,n:x.n,c:x.c,d:x.d,p:x.p,t:x.t||"",h:x.h||"",b:x.b||"",i:x.i||""}}),null,1)}
+function csvp(t){var r=[],row=[],f="",q=false;for(var i=0;i<t.length;i++){var c=t[i];if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}else if(c==='"')q=true;else if(c===","){row.push(f);f=""}else if(c==="\n"||c==="\r"){if(c==="\r"&&t[i+1]==="\n")i++;row.push(f);f="";if(row.length>1||row[0])r.push(row);row=[]}else f+=c}if(f||row.length){row.push(f);r.push(row)}return r}
+function pick(o,ks){for(var i=0;i<ks.length;i++)if(o[ks[i]])return o[ks[i]];return""}
+function toLeads(t,isJson){var rows=[];
+if(isJson){var j=JSON.parse(t);rows=(Array.isArray(j)?j:[]).map(function(x){var o={};Object.keys(x).forEach(function(k){o[k.toLowerCase().replace(/[^a-z0-9]/g,"")]=String(x[k])});return o})}
+else{var c=csvp(t);if(c.length<2)return[];var h=c[0].map(function(k){return k.toLowerCase().replace(/[^a-z0-9]/g,"")});rows=c.slice(1).map(function(r){var o={};h.forEach(function(k,i){o[k]=r[i]||""});return o})}
+return rows.map(function(o){var nm=sani(pick(o,["name","fullname","customername","yourname"]),60),ph=sani(pick(o,["phone","mobile","phonenumber","contact"]),18);if(!nm||!ph)return null;
+var ts=Date.parse(pick(o,["submittedat","timestamp","createdat"]))||Date.now();
+return{id:"I"+hs(nm+ph+ts),t:ts,name:nm,phone:ph,pkg:sani(pick(o,["package","packageservice","service","pkg"]),80),date:sani(pick(o,["traveldate","date"]),12),pax:sani(pick(o,["passengers","pax","people"]),4),src:sani(pick(o,["source","src"]),30)||"import",camp:sani(pick(o,["campaign","camp"]),40),via:sani(pick(o,["via"]),10)||"import"}}).filter(Boolean)}
+var _oc3=$("mp").onclick,_os3=$("mp").onsubmit;
+$("mp").onclick=function(e){var b=e.target.closest("[data-b]");if(b){var a=b.dataset.b;
+if(a==="px"){var j=pkgJson();$("pxo").innerHTML='<textarea id="pjt" readonly style="min-height:140px;font-size:.8rem;margin-top:10px">'+esc(j)+'</textarea><div class="row" style="margin-top:8px"><button class="btn" type="button" data-b="pc">COPY</button><a class="btn" id="pdl" download="packages.json" href="data:application/json;charset=utf-8,'+encodeURIComponent(j)+'">DOWNLOAD</a></div>';return}
+if(a==="pc"){var t=$("pjt");t.select();if(navigator.clipboard)navigator.clipboard.writeText(t.value).then(function(){toast("Copied")},function(){toast("Select and copy")});else toast("Select and copy");return}}
+_oc3(e)};
+$("mp").onsubmit=function(e){if(e.target.id==="imf"){e.preventDefault();var f=$("imfile").files[0];if(!f){toast("Choose a CSV or JSON file");return}var fr=new FileReader();
+fr.onload=function(){try{var ls=toLeads(String(fr.result),/\.json$/i.test(f.name)),a=[];try{a=JSON.parse(LS.g("jld")||"[]")}catch(x){}var have={};a.forEach(function(x){have[x.id]=1});var n=0;
+ls.forEach(function(o){if(have[o.id])return;a.push(o);n++;if(db){try{db.collection("leads").doc(o.id).set(o).catch(function(){})}catch(x){}}});
+a.sort(function(x,y){return y.t-x.t});LS.s("jld",JSON.stringify(a.slice(0,500)));slog("Imported leads: "+n);toast(n+" new leads imported");loadLeads()}catch(x){toast("Could not read that file")}};fr.readAsText(f);return}
+_os3(e)};
+
+var IMG=null;
+function shrink(f,cb){var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var w=Math.min(640,im.width),h=Math.round(im.height*w/im.width),c=document.createElement("canvas");c.width=w;c.height=h;c.getContext("2d").drawImage(im,0,0,w,h);cb(c.toDataURL("image/jpeg",.72))};im.onerror=function(){toast("Could not read that image")};im.src=fr.result};fr.readAsDataURL(f)}
+var _ch4=$("mp").onchange,_oc5=$("mp").onclick;
+$("mp").onchange=function(e){if(e.target.id==="aim"){var f=e.target.files[0];if(!f)return;shrink(f,function(d){IMG=d;var p=$("aip2");p.src=d;p.style.display="block";toast("Photo ready, now save the package")});return}_ch4(e)};
+$("mp").onclick=function(e){var b=e.target.closest("[data-b]");if(b&&b.dataset.b==="ri"){IMG="";var p=$("aip2");if(p)p.style.display="none";b.style.display="none";toast("Photo will be removed when you save");return}_oc5(e)};
+P=load()||DEF.slice();openMgr();
+(async function(){try{if(!window.claude)return;db=await claude.use("db");if(!db)return;
+db.doc("site/packages").onSnapshot(function(s){if(s.exists&&s.data()&&Array.isArray(s.data().list)){P=s.data().list;try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}if(AUTH&&MT==="pk")mgr()}},function(){})}catch(e){db=null}})();
+function callNow(n){var u="tel:"+n,done=false;
+try{window.top.location.href=u;done=true}catch(x){}
+if(!done){try{var a=document.createElement("a");a.href=u;a.target="_top";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();done=true}catch(x){}}
+if(!done){try{window.open(u,"_top")}catch(x){}}
+toast("📞 Calling "+n)}
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^='tel:']");if(!a)return;e.preventDefault();callNow(a.getAttribute("href").slice(4))});
+document.querySelectorAll("a[href^='tel:']").forEach(function(a){a.target="_top"});
+</script></body></html>

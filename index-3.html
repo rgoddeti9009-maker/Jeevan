@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Customer website. Upload as index.html (Netlify, Cloudflare Pages, GitHub Pages). Manager panel is a separate file. -->
+<title>Jeevan Tours & Travels – Shirdi</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050b17;--card:#0b1730;--ln:#12e0ff55;--c:#12e0ff;--o:#ff9933;--t:#e6f6ff;--m:#8fb3c9;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#050b17}}
+:root[data-theme="dark"]{--bg:#050b17}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--t);font:17px/1.5 Rajdhani,system-ui,sans-serif;overflow-x:hidden;
+background-image:linear-gradient(#12e0ff12 1px,transparent 1px),linear-gradient(90deg,#12e0ff12 1px,transparent 1px);background-size:44px 44px}
+h1,h2,h3,.f{font-family:Orbitron,system-ui,sans-serif;letter-spacing:.04em}
+a{color:inherit;text-decoration:none}
+nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;background:#050b17ee;border-bottom:1px solid var(--ln);backdrop-filter:blur(8px)}
+.logo{font-weight:900;color:var(--c);font-size:.95rem}.logo b{color:var(--o)}
+.links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.links a{padding:8px 11px;border:1px solid transparent;border-radius:8px;font-weight:600;white-space:nowrap}
+.links a:hover,.links a.on{border-color:var(--c);color:var(--c)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:0 20px;border:1px solid var(--c);border-radius:10px;background:#12e0ff1a;color:var(--c);font:700 .85rem Orbitron,sans-serif;cursor:pointer;touch-action:manipulation;transition:.2s}
+.btn:hover,.btn:active{background:var(--c);color:#041018;box-shadow:0 0 22px var(--c)}
+.btn.o{border-color:var(--o);color:var(--o);background:#ff99331a}.btn.o:hover{background:var(--o);color:#1b1000;box-shadow:0 0 22px var(--o)}
+.btn.r{border-color:#ff4d6d;color:#ff4d6d;background:#ff4d6d1a;min-height:38px;padding:0 12px}.btn.r:hover{background:#ff4d6d;color:#fff;box-shadow:0 0 18px #ff4d6d}
+section{padding:54px 16px;max-width:1100px;margin:auto}
+.hero{min-height:88vh;display:grid;align-content:center;gap:18px;position:relative}
+.hero:before{content:"";position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--c),transparent);box-shadow:0 0 18px var(--c);animation:scan 5s linear infinite}
+@keyframes scan{0%{top:0}100%{top:100%}}
+.tag{display:inline-block;padding:4px 12px;border:1px solid var(--ln);border-radius:20px;color:var(--c);font-size:.8rem;width:fit-content}
+.tag i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2dff9a;margin-right:6px;animation:bl 1.2s infinite}@keyframes bl{50%{opacity:.2}}
+h1{font-size:clamp(1.7rem,7vw,3.4rem);line-height:1.15;margin:0}h1 span{color:var(--c);text-shadow:0 0 18px var(--c)}
+#type{min-height:1.6em;color:var(--o);font:700 1.05rem Orbitron,sans-serif}#type:after{content:"▌";animation:bl 1s infinite}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.bot{width:120px;height:120px;border:2px solid var(--c);border-radius:28px;position:relative;box-shadow:0 0 30px #12e0ff55,inset 0 0 20px #12e0ff33;animation:fl 3s ease-in-out infinite}
+.bot:before,.bot:after{content:"";position:absolute;top:38px;width:22px;height:22px;border-radius:50%;background:var(--c);box-shadow:0 0 16px var(--c);animation:bk 4s infinite}
+.bot:before{left:24px}.bot:after{right:24px}.bot i{position:absolute;left:30px;right:30px;bottom:24px;height:6px;border-radius:4px;background:var(--o);box-shadow:0 0 10px var(--o)}
+@keyframes fl{50%{transform:translateY(-10px)}}@keyframes bk{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.card{background:linear-gradient(160deg,var(--card),#07101f);border:1px solid var(--ln);border-radius:14px;padding:16px;position:relative}
+.card:before{content:"";position:absolute;top:-1px;left:-1px;width:18px;height:18px;border-top:2px solid var(--c);border-left:2px solid var(--c);border-radius:14px 0 0 0}
+.stat b{display:block;font:900 1.7rem Orbitron,sans-serif;color:var(--c)}.stat span{color:var(--m)}
+h2{font-size:clamp(1.3rem,5vw,2rem);margin:0 0 6px;color:var(--c)}.sub{color:var(--m);margin:0 0 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.pk{display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(16px);transition:.5s}.pk.in{opacity:1;transform:none}
+.pk h3{margin:0;font-size:1rem}.pk .d{color:var(--m);flex:1}.pk .meta{display:flex;justify-content:space-between;gap:8px;color:var(--o);font-weight:600;flex-wrap:wrap}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.chips button{min-height:40px}.chips .on{background:var(--c);color:#041018}
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}.svc .card h3{margin:0 0 4px;font-size:.95rem;color:var(--o)}
+input,select,textarea{width:100%;min-height:46px;padding:10px 12px;background:#06122a;color:var(--t);border:1px solid var(--ln);border-radius:10px;font:inherit}
+textarea{min-height:80px}label{display:block;font-size:.85rem;color:var(--m);margin:10px 0 4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:520px){.two{grid-template-columns:1fr}}
+footer{padding:30px 16px 90px;text-align:center;color:var(--m);border-top:1px solid var(--ln)}
+.fab{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px;z-index:30}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.4rem;border:1px solid var(--c);background:#050b17;box-shadow:0 0 16px #12e0ff66}
+.fab a.w{border-color:#25d366;box-shadow:0 0 16px #25d36688}
+#adm{position:fixed;inset:0;z-index:40;background:#02060dee;display:none;overflow:auto;padding:16px}#adm.on{display:block}
+#adm .box{max-width:1000px;margin:auto}#adm{background:var(--bg)}.br{display:flex;align-items:center;gap:8px;margin:7px 0}.br i{display:block;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--c),var(--o))}#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--card);border:1px solid var(--c);padding:10px 16px;border-radius:10px;z-index:50;display:none}
+.li{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--ln)}.li div{min-width:0}.li small{color:var(--m)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+nav select{min-height:40px;width:auto;padding:0 8px;font:600 .8rem Rajdhani,sans-serif}
+.ab{width:54px;height:54px;border-radius:50%;font-size:1.5rem;border:1px solid var(--o);background:#050b17;box-shadow:0 0 16px #ff993388;cursor:pointer}
+#aip{position:fixed;right:10px;left:10px;bottom:calc(200px + env(safe-area-inset-bottom,0px));max-width:400px;margin-left:auto;height:min(460px,calc(100dvh - 280px));display:none;flex-direction:column;background:var(--card);border:1px solid var(--c);border-radius:16px;z-index:35;overflow:hidden;box-shadow:0 0 30px #12e0ff55}#aip.on{display:flex}
+#aih{display:flex;justify-content:space-between;align-items:center;padding:6px 10px 6px 14px;background:#12e0ff22;font:700 .85rem Orbitron,sans-serif}
+#am{flex:1;overflow:auto;padding:10px;display:flex;flex-direction:column;gap:8px}.m{max-width:85%;padding:8px 12px;border-radius:12px;white-space:pre-wrap}.m.b{background:#12e0ff1f;border:1px solid var(--ln);align-self:flex-start}.m.u{background:#ff99332a;border:1px solid #ff993366;align-self:flex-end}
+#ac{display:flex;gap:6px;flex-wrap:wrap;padding:0 10px 8px}#ac button{min-height:36px;padding:0 10px;font-size:.7rem}
+#aif{display:flex;gap:6px;padding:8px;border-top:1px solid var(--ln)}#aif .btn{min-width:48px;padding:0 10px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.tabs .btn{min-height:40px;padding:0 12px;font-size:.72rem}.tabs .on{background:var(--c);color:#041018}
+.out{word-break:break-all;background:#06122a;border:1px solid var(--ln);border-radius:10px;padding:10px;margin-top:10px;font-size:.85rem}
+.kv{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.kv span{padding:4px 10px;border:1px solid var(--ln);border-radius:20px;font-size:.85rem}
+.wel{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;border-color:var(--c)}.wel b{font:700 .95rem Orbitron,sans-serif;color:var(--c)}.wel span{color:var(--m)}
+.steps{display:flex;gap:6px}.steps span{flex:1;text-align:center;font:700 .7rem Orbitron,sans-serif;padding:8px 4px;border:1px solid var(--ln);border-radius:8px;color:var(--m)}.steps .on{color:#041018;background:var(--c);box-shadow:0 0 14px var(--c)}
+.pbar{height:4px;background:#12e0ff22;border-radius:3px;margin:10px 0 6px}.pbar i{display:block;height:4px;border-radius:3px;background:linear-gradient(90deg,var(--c),var(--o));width:33%;transition:.4s}
+.stp{display:none}.stp.on{display:block;animation:fi .3s}@keyframes fi{from{opacity:0;transform:translateY(8px)}}
+.qc{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.qc button{min-height:36px;padding:0 12px;border:1px solid var(--ln);border-radius:20px;background:#12e0ff12;color:var(--c);font:600 .85rem Rajdhani,sans-serif;cursor:pointer;touch-action:manipulation}.qc button.on,.qc button:active{background:var(--c);color:#041018}
+.num{display:flex;gap:6px}.num button{min-width:52px;border:1px solid var(--c);background:#12e0ff1a;color:var(--c);border-radius:10px;font-size:1.3rem;cursor:pointer}.num input{text-align:center}
+.wb{position:fixed;right:76px;bottom:calc(150px + env(safe-area-inset-bottom,0px));max-width:230px;display:none;gap:8px;align-items:flex-start;padding:10px 12px;background:var(--card);border:1px solid var(--c);border-radius:14px;z-index:31;box-shadow:0 0 18px #12e0ff55;cursor:pointer}.wb.on{display:flex}.wb button{border:0;background:none;color:var(--m);font-size:1rem;cursor:pointer}
+.pk{gap:10px}.pk.in:hover{box-shadow:0 0 24px #12e0ff55;transform:translateY(-3px)}.ph{display:flex;justify-content:space-between;align-items:center}.ic{font-size:2rem;filter:drop-shadow(0 0 8px var(--c))}.bd{font:700 .65rem Orbitron,sans-serif;padding:4px 9px;border-radius:20px;background:var(--o);color:#1b1000;box-shadow:0 0 12px var(--o)}
+.hl{display:flex;gap:6px;flex-wrap:wrap}.hl span{font-size:.75rem;padding:3px 9px;border:1px solid var(--ln);border-radius:20px;color:var(--c);background:#12e0ff10}
+#pm{position:fixed;inset:0;z-index:45;background:#02060dd9;display:none;overflow:auto;padding:16px}#pm.on{display:block}#pm .card{max-width:520px;margin:30px auto}
+.im{position:relative;height:120px;border-radius:10px;overflow:hidden;border:1px solid var(--ln);margin-bottom:8px;background:#06122a}.im svg,.im img{width:100%;height:100%;object-fit:cover;display:block}.im .ic{position:absolute;left:8px;bottom:4px;font-size:1.7rem;filter:drop-shadow(0 0 8px #000)}.im .bd{position:absolute;top:8px;right:8px}.im:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,#050b17aa);pointer-events:none}
+#pm .im{height:170px}
+</style></head><body>
+<nav><a href="#top" class="logo f">JEEVAN <b>TOURS</b></a>
+<div class="links" id="lk"><a href="#packages" data-i="np">Packages</a><a href="#services" data-i="ns">Services</a><a href="#book" data-i="nb">Book</a><a href="#contact" data-i="nc">Contact</a></div>
+<select id="lg" aria-label="Language"></select><a class="btn" href="tel:+919511188188" style="min-height:40px;padding:0 12px">📞 Call</a></nav>
+
+<section class="hero" id="top">
+<span class="tag f"><i></i>SYSTEM ONLINE · SHIRDI</span>
+<div class="bot" aria-hidden="true"><i></i></div>
+<h1 data-i="h1">Smart Travel from Shirdi, Powered by Precision</h1>
+<div id="type"></div>
+<p class="sub" style="max-width:560px" data-i="sub">One-way cabs, round-trip tours, pilgrimage packages and hotels across Maharashtra. Pick a package and we confirm it on WhatsApp.</p>
+<div class="row"><a class="btn" href="#packages" data-i="vp">VIEW PACKAGES</a><a class="btn o" href="#book" data-i="bn">BOOK NOW</a><a class="btn" href="tel:+919511188188" style="border-color:#2dff9a;color:#2dff9a">📞 CALL NOW</a><a class="btn" target="_blank" rel="noopener" href="https://wa.me/919511188188?text=Hello%20Jeevan%20Tours%2C%20I%20need%20a%20quote">WHATSAPP</a></div>
+</section>
+
+<section style="padding-top:0"><div class="stats">
+<div class="card stat"><b data-n="24">0</b><span data-i="s1">Hours support</span></div>
+<div class="card stat"><b id="pc" data-n="0">0</b><span data-i="s2">Tour packages</span></div>
+<div class="card stat"><b data-n="7">0</b><span data-i="s3">Days a week</span></div>
+<div class="card stat"><b data-n="2">0</b><span data-i="s4">Direct phone lines</span></div></div></section>
+
+<section id="packages"><h2 class="f" data-i="pt">TOUR PACKAGES</h2><p class="sub">Tap a package for details, or book it in one tap.</p>
+<input id="pq" placeholder="🔎 Search packages (Pune, Jyotirlinga, airport, hotel…)" maxlength="40" style="margin-bottom:12px"><div class="chips" id="chips"></div><div class="grid" id="grid"></div>
+</section>
+
+<section id="services"><h2 class="f" data-i="st">SERVICES</h2><p class="sub">Everything for the road, handled.</p>
+<div class="svc">
+<button type="button" class="card" data-sv="ow" style="text-align:left;color:inherit;cursor:pointer;font:inherit"><div class="im" data-art="One-way"></div><h3 data-i="v1">One-way cab</h3>Drops from Shirdi to Pune, Mumbai, Nashik, Sambhajinagar and more. <b style="color:var(--c)">Tap to book →</b></button>
+<button type="button" class="card" data-sv="1-Day Round Trip" style="text-align:left;color:inherit;cursor:pointer;font:inherit"><div class="im" data-art="1-Day Round Trip"></div><h3 data-i="v2">1-day round trip</h3>Shani Shingnapur, Nashik–Trimbakeshwar and other day tours. <b style="color:var(--c)">See packages →</b></button>
+<button type="button" class="card" data-sv="Multi-day" style="text-align:left;color:inherit;cursor:pointer;font:inherit"><div class="im" data-art="Multi-day"></div><h3 data-i="v3">Multi-day tours</h3>Jyotirlinga, Ashtavinayak, Shakti Peeth and Konkan journeys. <b style="color:var(--c)">See packages →</b></button>
+<button type="button" class="card" data-sv="ht" style="text-align:left;color:inherit;cursor:pointer;font:inherit"><div class="im" data-art="Hotels"></div><h3 data-i="v4">Hotels & stays</h3>Stays in Shirdi and in every destination you visit. <b style="color:var(--c)">Enquire →</b></button>
+<button type="button" class="card" data-sv="cb" style="text-align:left;color:inherit;cursor:pointer;font:inherit"><div class="im" data-art="Custom"></div><h3 data-i="v5">Call-back</h3>Leave your number and we call you. <b style="color:var(--c)">Request →</b></button></div></section>
+
+<section id="book"><h2 class="f" data-i="bt2">BOOK / ENQUIRY</h2>
+<div class="card wel"><span class="tag f"><i></i>ONLINE</span><div><b id="wg">Welcome!</b><br><span>Tell us your trip in 3 quick steps. We reply on WhatsApp.</span></div></div>
+<form class="card" id="bf" novalidate><input id="web" name="web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;opacity:0">
+<div class="steps" id="stp"><span class="on">1 TRIP</span><span>2 YOU</span><span>3 REVIEW</span></div><div class="pbar"><i id="pb"></i></div>
+<div class="stp on" data-s="1"><label for="s" data-i="lk">Package / service</label><select id="s"></select>
+<label for="dt" data-i="ld">Travel date</label><input id="dt" type="date">
+<label for="pa" data-i="lq">Passengers</label><div class="num"><button type="button" data-q="-" aria-label="Less">−</button><input id="pa" type="number" min="1" max="60" value="2"><button type="button" data-q="+" aria-label="More">＋</button></div>
+<div class="qc"><button type="button" data-set="pa" data-v="2">2</button><button type="button" data-set="pa" data-v="4">4</button><button type="button" data-set="pa" data-v="6">6</button><button type="button" data-set="pa" data-v="10">10</button><button type="button" data-set="pa" data-v="20">20</button></div>
+<label for="pk" data-i="lu">Pickup place</label><input id="pk" placeholder="Shirdi" maxlength="60">
+<div class="qc"><button type="button" data-set="pk" data-v="Shirdi">Shirdi</button><button type="button" data-set="pk" data-v="Shirdi Railway Station">Railway station</button><button type="button" data-set="pk" data-v="Shirdi Bus Stand">Bus stand</button><button type="button" data-set="pk" data-v="Shirdi Airport">Airport</button></div>
+<div class="row" style="margin-top:14px"><button class="btn o" type="button" data-nx="1">NEXT ▶</button></div></div>
+<div class="stp" data-s="2"><label for="n" data-i="ln">Your name</label><input id="n" maxlength="60" autocomplete="name">
+<label for="p" data-i="lp">Phone</label><input id="p" type="tel" inputmode="tel" maxlength="18" autocomplete="tel">
+<label>Contact me by</label><div class="qc"><button type="button" class="on" data-cm="WhatsApp">💬 WhatsApp</button><button type="button" data-cm="Call">📞 Call</button></div>
+<label for="nt" data-i="lo">Notes</label><textarea id="nt" maxlength="300"></textarea>
+<div class="qc"><button type="button" data-add="AC vehicle">❄ AC vehicle</button><button type="button" data-add="With family">👨‍👩‍👧 With family</button><button type="button" data-add="Senior citizens">🧓 Senior citizens</button><button type="button" data-add="Need hotel too">🏨 Hotel too</button><button type="button" data-add="Extra luggage">🧳 Luggage</button></div>
+<div class="row" style="margin-top:14px"><button class="btn" type="button" data-bk="1">◀ BACK</button><button class="btn o" type="button" data-nx="1">NEXT ▶</button></div></div>
+<div class="stp" data-s="3"><div class="card" id="rv" style="margin-top:10px"></div>
+<div class="row" style="margin-top:14px"><button class="btn" type="button" data-bk="1">◀ BACK</button><button class="btn o" type="submit" data-i="sw">SEND ON WHATSAPP</button></div></div></form>
+<div class="card" id="ok" style="display:none"></div></section>
+
+<section id="contact"><h2 class="f" data-i="ct">CONTACT</h2>
+<div class="card"><p style="margin:0 0 6px">📍 Opp. VIP Gate No. 2 of Sai Baba Temple, Pimpalwadi Road, Shirdi, Tal. Rahata, Dist. Ahilyanagar 423109</p>
+<p style="margin:0 0 12px">📞 <a href="tel:+919511188188">+91 95111 88188</a> · <a href="tel:+919096690947">+91 90966 90947</a></p>
+<div class="row"><a class="btn" target="_blank" rel="noopener" href="https://www.instagram.com/JeevanHolidays">INSTAGRAM</a><a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/?q=Pimpalwadi+Road+Shirdi">OPEN MAP</a></div></div></section>
+
+<footer class="f" style="font-size:.8rem">© Jeevan Tours & Travels, Shirdi</footer>
+<div class="fab"><button type="button" id="aib" class="ab" aria-label="AI assistant">🤖</button><a href="tel:+919511188188" aria-label="Call">📞</a><a class="w" target="_blank" rel="noopener" href="https://wa.me/919511188188" aria-label="WhatsApp">💬</a></div>
+
+<div id="aip" role="dialog" aria-label="AI assistant"><div id="aih"><span>🤖 JEEVAN AI</span><button class="btn" id="aix" type="button" aria-label="Close" style="min-height:40px;padding:0 12px">✕ Close</button></div><div id="am"></div><div id="ac"></div><form id="aif"><input id="aiq" maxlength="200" autocomplete="off" placeholder="Ask anything…"><button class="btn" type="submit" aria-label="Send">➤</button></form></div>
+<div id="pm" role="dialog" aria-label="Package details"></div>
+<div class="wb" id="wb"><span>👋 Welcome! Need help planning your trip? Tap to chat with our assistant.</span><button type="button" id="wbx" aria-label="Close">✕</button></div>
+<div id="toast"></div>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+var DEF=[
+{id:"d1",n:"Shirdi to Shani Shingnapur",c:"1-Day Round Trip",d:"Darshan at Shani Shingnapur with a comfortable return to Shirdi the same day.",p:""},
+{id:"d2",n:"Nashik – Trimbakeshwar",c:"1-Day Round Trip",d:"Trimbakeshwar Jyotirlinga and Nashik sightseeing in one day.",p:""},
+{id:"d3",n:"Shirdi to Pune Drop",c:"One-way",d:"Direct one-way cab drop from Shirdi to Pune, about 190 km.",p:""},
+{id:"d4",n:"Shirdi to Mumbai Drop",c:"One-way",d:"Direct one-way cab drop from Shirdi to Mumbai, about 250 km.",p:""},
+{id:"d5",n:"Ashtavinayak Yatra",c:"Pilgrimage",d:"Multi-day journey covering the eight Ganpati temples of Maharashtra.",p:""},
+{id:"d6",n:"3 and 5 Jyotirlinga Tour",c:"Pilgrimage",d:"Guided Jyotirlinga circuit with vehicle and driver for the full trip.",p:""},
+{id:"d7",n:"Mahabaleshwar and Lonavala",c:"Multi-day",d:"Hill-station getaway with scenic points and relaxed stays.",p:""},
+{id:"d8",n:"Konkan Coastal Tour",c:"Multi-day",d:"Beaches, forts and coastal temples along the Konkan route.",p:""},
+{id:"d9",n:"Ajanta, Ellora and Grishneshwar",c:"Multi-day",d:"Cave temples near Sambhajinagar and the Grishneshwar Jyotirlinga, with vehicle and driver for the whole trip.",p:""},
+{id:"d10",n:"Pandharpur and Tuljapur Darshan",c:"Pilgrimage",d:"Vitthal darshan at Pandharpur and Tuljabhavani darshan at Tuljapur in one pilgrimage trip.",p:""},
+{id:"d11",n:"Kolhapur Mahalaxmi Darshan",c:"Pilgrimage",d:"Comfortable round trip from Shirdi for Mahalaxmi darshan at Kolhapur.",p:""},
+{id:"d12",n:"Mumbai Siddhivinayak Darshan",c:"Pilgrimage",d:"Round trip from Shirdi to Mumbai for Siddhivinayak darshan and city stops.",p:""},
+{id:"d13",n:"Pune and Lonavala Tour",c:"Multi-day",d:"Pune sightseeing and Lonavala hill-station stops on a relaxed multi-day plan.",p:""},
+{id:"d14",n:"Shirdi Local Sightseeing",c:"1-Day Round Trip",d:"Vehicle on hire for temple visits and sightseeing around Shirdi.",p:""},
+{id:"d15",n:"Shirdi Hotel Stay Package",c:"Hotels",d:"Hotel stay in Shirdi arranged for your budget and group size, with optional pickup.",p:""},
+{id:"d16",n:"Nashik Panchavati and Saptashrungi",c:"Pilgrimage",d:"Nashik temple circuit with a visit to Saptashrungi Devi, planned around your time.",p:""},
+{id:"d17",n:"Bhimashankar Jyotirlinga Tour",c:"Pilgrimage",d:"Round trip from Shirdi for Bhimashankar Jyotirlinga darshan with vehicle and driver.",p:""},
+{id:"d18",n:"Shegaon Gajanan Maharaj Darshan",c:"Pilgrimage",d:"Pilgrimage trip from Shirdi to Shegaon for Gajanan Maharaj darshan.",p:""},
+{id:"d19",n:"Goa Holiday Package",c:"Multi-day",d:"Beach holiday from Shirdi to Goa with a vehicle and driver for the whole trip.",p:""},
+{id:"d20",n:"Ganpatipule and Ratnagiri",c:"Multi-day",d:"Coastal Konkan trip covering Ganpatipule temple and beach stops.",p:""},
+{id:"d21",n:"Sambhajinagar City and Daulatabad",c:"1-Day Round Trip",d:"City sightseeing and Daulatabad Fort in one day from Shirdi.",p:""},
+{id:"d22",n:"Mumbai Airport Pickup and Drop",c:"One-way",d:"Cab between Shirdi and Mumbai airport, timed to your flight.",p:""},
+{id:"d23",n:"Pune Airport Pickup and Drop",c:"One-way",d:"Cab between Shirdi and Pune airport, timed to your flight.",p:""},
+{id:"d24",n:"Shirdi Airport Pickup and Drop",c:"One-way",d:"Pickup or drop at Shirdi airport to your hotel or temple area.",p:""},
+{id:"d25",n:"Tempo Traveller Group Hire",c:"Group Hire",d:"Roomy vehicle on hire for family groups, devotees and wedding parties.",p:""},
+{id:"d26",n:"Custom Tour Planning",c:"Custom",d:"Tell us your route, dates and group size and we will plan a tour for you.",p:""}];
+var XT={d1:["1 Day","Popular"],d2:["1 Day","Popular"],d3:["One-way",""],d4:["One-way",""],d5:["2-3 Days","Popular"],d6:["Custom",""],d7:["2-3 Days",""],d8:["3-4 Days",""],d9:["2-3 Days",""],d10:["2 Days",""],d11:["2 Days",""],d12:["1-2 Days",""],d13:["2-3 Days",""],d14:["Per day",""],d15:["Per night",""],d16:["1-2 Days",""],d17:["1-2 Days",""],d18:["1-2 Days",""],d19:["4-5 Days","New"],d20:["3-4 Days","New"],d21:["1 Day",""],d22:["One-way",""],d23:["One-way",""],d24:["One-way",""],d25:["Per day","New"],d26:["Flexible",""]};
+DEF.forEach(function(x){var m=XT[x.id];if(m){x.t=m[0];x.b=m[1]}});
+/* ===== SETTINGS: edit after you set things up ===== */
+var SITE={ga:"",gads:"",px:"",packages:null};   /* ga: Google tag id (G-XXXX), gads: conversion (AW-123/abc), px: Meta Pixel id, packages: paste the manager's packages.json array here (optional) */
+var FORMSPREE_URL="";   /* e.g. "https://formspree.io/f/abcdwxyz" (create at formspree.io, free) */
+var GOOGLE_FORM={url:"",name:"",phone:"",pkg:"",date:"",pax:"",src:""};
+/* Google Form: url = the form's ".../formResponse" address; name/phone/... = its field ids like "entry.123456789" */
+function sendLead(o){var d={name:o.name,phone:o.phone,package:o.pkg||"",date:o.date||"",passengers:o.pax||"",source:o.src||"",campaign:o.camp||"",via:o.via||""};
+try{if(/^https:\/\/formspree\.io\//.test(FORMSPREE_URL))fetch(FORMSPREE_URL,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)}).catch(function(){})}catch(e){}
+try{if(/^https:\/\/docs\.google\.com\/forms\//.test(GOOGLE_FORM.url)){var f=new FormData();f.append(GOOGLE_FORM.name,d.name);f.append(GOOGLE_FORM.phone,d.phone);if(GOOGLE_FORM.pkg)f.append(GOOGLE_FORM.pkg,d.package);if(GOOGLE_FORM.date)f.append(GOOGLE_FORM.date,d.date);if(GOOGLE_FORM.pax)f.append(GOOGLE_FORM.pax,d.passengers);if(GOOGLE_FORM.src)f.append(GOOGLE_FORM.src,d.source);fetch(GOOGLE_FORM.url,{method:"POST",mode:"no-cors",body:f}).catch(function(){})}}catch(e){}}
+var P=[],db=null,KEY="jeevan_pk_v1",cat="All",WA="919511188188";
+function toast(m){var t=$("toast");t.textContent=m;t.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(function(){t.style.display="none"},2200)}
+function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+function wa(t){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(t),"_blank","noopener")}
+var CIC={"One-way":"🚖","1-Day Round Trip":"🌄","Multi-day":"🧳","Pilgrimage":"🛕","Hotels":"🏨","Group Hire":"🚌","Custom":"✨"};
+var CHL={"One-way":"Door-to-door,Driver included,Flexible timing","1-Day Round Trip":"Same-day return,Driver included,Flexible stops","Multi-day":"Driver included,Flexible itinerary,Stay help","Pilgrimage":"Darshan planning,Driver included,Family friendly","Hotels":"Budget options,Pickup option,Group friendly","Group Hire":"Roomy seating,Driver included,Group friendly","Custom":"Tailor-made,Free quote,Any route"};
+function art(c){var h='<svg viewBox="0 0 300 150" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1f4d"/><stop offset="1" stop-color="#ff7a2f"/></linearGradient><linearGradient id="gn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#050b17"/><stop offset="1" stop-color="#0b3a6b"/></linearGradient></defs>',st='<g fill="#fff" opacity=".7"><circle cx="30" cy="20" r="1"/><circle cx="80" cy="40" r="1.2"/><circle cx="130" cy="15" r="1"/><circle cx="200" cy="30" r="1.2"/><circle cx="270" cy="18" r="1"/></g>',g="";
+if(c==="Pilgrimage")g='<rect width="300" height="150" fill="url(#gn)"/>'+st+'<circle cx="245" cy="38" r="16" fill="#ffd27a"/><circle cx="245" cy="38" r="26" fill="#ffd27a" opacity=".15"/><rect x="105" y="98" width="90" height="42" fill="#0c2340" stroke="#12e0ff" stroke-width="1.2"/><polygon points="112,98 150,38 188,98" fill="#0c2340" stroke="#12e0ff" stroke-width="1.2"/><polygon points="128,98 150,60 172,98" fill="#10315a"/><circle cx="150" cy="32" r="4" fill="#ff9933"/><line x1="150" y1="20" x2="150" y2="32" stroke="#ff9933"/><path d="M150,20 l14,4 l-14,4z" fill="#ff9933"/><path d="M140,140 v-20 a10,10 0 0 1 20,0 v20z" fill="#ffd27a" opacity=".85"/><rect y="138" width="300" height="12" fill="#06142b"/>';
+else if(c==="One-way")g='<rect width="300" height="150" fill="url(#gs)"/><circle cx="225" cy="70" r="22" fill="#ffd27a"/><polygon points="0,90 60,60 120,92 0,92" fill="#0b1b3a"/><polygon points="180,92 250,58 300,85 300,92" fill="#0b1b3a"/><rect y="90" width="300" height="60" fill="#06142b"/><polygon points="110,150 190,150 156,90 144,90" fill="#0c1b33" stroke="#12e0ff" stroke-width="1"/><g stroke="#ffd27a" stroke-width="2" stroke-dasharray="6 6"><line x1="150" y1="92" x2="150" y2="150"/></g><rect x="134" y="118" width="32" height="11" rx="3" fill="#12e0ff"/><rect x="141" y="110" width="18" height="9" rx="3" fill="#12e0ff"/><circle cx="142" cy="130" r="3.5" fill="#050b17"/><circle cx="158" cy="130" r="3.5" fill="#050b17"/>';
+else if(c==="1-Day Round Trip")g='<rect width="300" height="150" fill="url(#gs)"/><circle cx="70" cy="62" r="20" fill="#ffd27a"/><polygon points="0,110 80,70 160,112 0,112" fill="#0b1b3a"/><polygon points="120,112 210,62 300,108 300,112" fill="#10264d"/><rect y="108" width="300" height="42" fill="#06142b"/><path d="M20,140 C100,105 200,150 280,118" stroke="#12e0ff" stroke-width="3" fill="none" stroke-dasharray="7 6"/><circle cx="20" cy="140" r="5" fill="#ff9933"/><circle cx="280" cy="118" r="5" fill="#2dff9a"/>';
+else if(c==="Multi-day")g='<rect width="300" height="150" fill="url(#gn)"/>'+st+'<circle cx="60" cy="38" r="14" fill="#ffd27a"/><polygon points="0,140 70,60 120,110 170,45 240,125 300,80 300,150 0,150" fill="#0c2340" stroke="#12e0ff" stroke-width="1"/><polygon points="170,45 155,68 170,62 185,70" fill="#e6f6ff"/><polygon points="70,60 58,78 70,72 82,80" fill="#e6f6ff"/><path d="M20,135 C80,100 120,130 170,95 S250,100 280,70" stroke="#ff9933" stroke-width="2.5" fill="none" stroke-dasharray="6 5"/><circle cx="280" cy="70" r="5" fill="#ff9933"/>';
+else if(c==="Hotels")g='<rect width="300" height="150" fill="url(#gn)"/>'+st+'<rect x="90" y="40" width="120" height="100" fill="#0c2340" stroke="#12e0ff" stroke-width="1.2"/><g fill="#ffd27a">'+[0,1,2,3].map(function(r){return[0,1,2,3,4].map(function(k){return'<rect x="'+(100+k*22)+'" y="'+(50+r*20)+'" width="12" height="11" opacity="'+((r*5+k)%3?.95:.3)+'"/>'}).join("")}).join("")+'</g><rect x="140" y="118" width="20" height="22" fill="#12e0ff" opacity=".8"/><rect y="138" width="300" height="12" fill="#06142b"/>';
+else if(c==="Group Hire")g='<rect width="300" height="150" fill="url(#gs)"/><circle cx="240" cy="56" r="18" fill="#ffd27a"/><rect y="118" width="300" height="32" fill="#06142b"/><rect x="70" y="78" width="160" height="42" rx="9" fill="#12e0ff"/><g fill="#050b17" opacity=".85"><rect x="82" y="86" width="22" height="16" rx="2"/><rect x="110" y="86" width="22" height="16" rx="2"/><rect x="138" y="86" width="22" height="16" rx="2"/><rect x="166" y="86" width="22" height="16" rx="2"/><rect x="194" y="86" width="26" height="22" rx="2"/><circle cx="105" cy="122" r="8"/><circle cx="195" cy="122" r="8"/></g>';
+else g='<rect width="300" height="150" fill="url(#gn)"/>'+st+'<circle cx="150" cy="78" r="46" fill="none" stroke="#12e0ff" stroke-width="2"/><circle cx="150" cy="78" r="34" fill="none" stroke="#12e0ff" stroke-width="1" stroke-dasharray="3 5"/><polygon points="150,36 160,78 150,120 140,78" fill="#ff9933"/><polygon points="108,78 150,68 192,78 150,88" fill="#12e0ff" opacity=".7"/><circle cx="150" cy="78" r="5" fill="#e6f6ff"/>';
+return h+g+'</svg>'}
+function pimg(x){return'<div class="im">'+(x.i?'<img alt="'+ea(x.n)+'" src="'+x.i+'">':art(x.c))+'<span class="ic">'+(CIC[x.c]||"🗺")+'</span>'+(x.b?'<span class="bd">'+esc(x.b)+'</span>':"")+'</div>'}
+document.querySelectorAll("[data-art]").forEach(function(d){d.innerHTML=art(d.dataset.art)});
+function hls(x){return(x.h||CHL[x.c]||"Driver included,Flexible timing").split(",").map(function(v){return sani(v,30)}).filter(Boolean).slice(0,4)}
+function pdesc(x){return(TRC[LN]&&TRC[LN][x.d])||x.d}
+function pickPk(x){$("s").value=x.n;$("ok").style.display="none";$("bf").style.display="block";bstep(1);track("select_package",{package:x.n});location.hash="book";toast(x.n)}
+function openPk(x){track("view_package",{package:x.n});$("pm").innerHTML='<div class="card">'+pimg(x)+'<span class="tag f">'+esc(x.c)+'</span><h3 class="f" style="margin:8px 0">'+esc(x.n)+'</h3><p style="margin:0 0 10px">'+esc(pdesc(x))+'</p><div class="hl">'+hls(x).map(function(h){return"<span>✔ "+esc(h)+"</span>"}).join("")+'</div><div class="meta" style="margin:12px 0;display:flex;justify-content:space-between;color:var(--o);font-weight:600"><span>⏱ '+esc(x.t||"Flexible")+'</span><span>'+(x.p?"₹"+esc(x.p):esc(T("pr")))+'</span></div><p class="sub" style="font-size:.85rem;margin:0 0 12px">Vehicle, route and fare are confirmed on WhatsApp after your request. Durations are a guide and can be changed.</p><div class="row"><button class="btn o" type="button" data-pm="bk">'+esc(T("bt"))+'</button><button class="btn" type="button" data-pm="wa">💬 ASK ON WHATSAPP</button><a class="btn" href="tel:+919511188188">📞 CALL</a><button class="btn r" type="button" data-pm="cl">✕ CLOSE</button></div></div>';$("pm").classList.add("on");$("pm").dataset.id=x.id}
+$("pm").onclick=function(e){var b=e.target.closest("[data-pm]");if(!b){if(e.target===$("pm"))$("pm").classList.remove("on");return}var x=P.filter(function(y){return y.id===$("pm").dataset.id})[0];$("pm").classList.remove("on");if(!x)return;
+if(b.dataset.pm==="bk")pickPk(x);else if(b.dataset.pm==="wa")wa("Hello Jeevan Tours, I want details about: "+x.n)};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")$("pm").classList.remove("on")});
+$("pq").oninput=function(){render()};
+function render(){
+var cs=["All"];P.forEach(function(x){if(cs.indexOf(x.c)<0)cs.push(x.c)});if(cs.indexOf(cat)<0)cat="All";
+var ch=$("chips");ch.innerHTML="";cs.forEach(function(c){var b=document.createElement("button");b.type="button";b.className="btn"+(c===cat?" on":"");b.textContent=c;b.onclick=function(){cat=c;render()};ch.appendChild(b)});
+var g=$("grid");g.innerHTML="";var q=sani($("pq").value,40).toLowerCase();
+P.filter(function(x){return(cat==="All"||x.c===cat)&&(!q||(x.n+" "+x.d+" "+x.c).toLowerCase().indexOf(q)>=0)}).forEach(function(x,i){
+var d=document.createElement("div");d.className="card pk";
+d.innerHTML=''+pimg(x)+'<span class="tag f">'+esc(x.c)+'</span><h3 class="f">'+esc(x.n)+'</h3><div class="d">'+esc(pdesc(x))+'</div><div class="hl">'+hls(x).map(function(h){return"<span>"+esc(h)+"</span>"}).join("")+'</div><div class="meta"><span>⏱ '+esc(x.t||"Flexible")+'</span><span>'+(x.p?"₹"+esc(x.p):esc(T("pr")))+'</span></div>';
+var r=document.createElement("div");r.className="row";
+var b1=document.createElement("button");b1.type="button";b1.className="btn";b1.textContent="DETAILS";b1.style.minHeight="40px";b1.onclick=function(){openPk(x)};
+var b2=document.createElement("button");b2.type="button";b2.className="btn o";b2.textContent=T("bt");b2.style.minHeight="40px";b2.onclick=function(){pickPk(x)};
+r.appendChild(b1);r.appendChild(b2);d.appendChild(r);g.appendChild(d);setTimeout(function(){d.classList.add("in")},50*Math.min(i,10))});
+if(!g.children.length)g.innerHTML='<div class="card">No packages match. Try another search or call us.</div>';
+var s=$("s"),cur=s.value;s.innerHTML="";P.concat([{n:"One-way cab (custom route)"},{n:"Other / not sure"}]).forEach(function(x){var o=document.createElement("option");o.textContent=x.n;s.appendChild(o)});if(cur)s.value=cur;
+$("pc").dataset.n=P.length;$("pc").textContent=P.length}
+/* ===== language ===== */
+var LS={g:function(k){try{return localStorage.getItem(k)}catch(e){return null}},s:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+var LGN={en:"English",hi:"हिन्दी",te:"తెలుగు",kn:"ಕನ್ನಡ",ta:"தமிழ்",gu:"ગુજરાતી",mr:"मराठी",bn:"বাংলা",ml:"മലയാളം",pa:"ਪੰਜਾਬੀ",or:"ଓଡ଼ିଆ"};
+var TX={
+en:{np:"Packages",ns:"Services",nb:"Book",nc:"Contact",vp:"VIEW PACKAGES",bn:"BOOK NOW",pt:"TOUR PACKAGES",st:"SERVICES",bt2:"BOOK / ENQUIRY",ct:"CONTACT",sw:"SEND ON WHATSAPP",bt:"BOOK THIS",pr:"Price on request",mg:"⚙ MANAGER"},
+hi:{np:"पैकेज",ns:"सेवाएं",nb:"बुकिंग",nc:"संपर्क",vp:"पैकेज देखें",bn:"अभी बुक करें",pt:"टूर पैकेज",st:"सेवाएं",bt2:"बुकिंग / पूछताछ",ct:"संपर्क",sw:"WhatsApp पर भेजें",bt:"यह बुक करें",pr:"कीमत पूछें",mg:"⚙ मैनेजर"},
+te:{np:"ప్యాకేజీలు",ns:"సేవలు",nb:"బుకింగ్",nc:"సంప్రదించండి",vp:"ప్యాకేజీలు చూడండి",bn:"ఇప్పుడే బుక్ చేయండి",pt:"టూర్ ప్యాకేజీలు",st:"సేవలు",bt2:"బుకింగ్ / విచారణ",ct:"సంప్రదింపు",sw:"WhatsApp లో పంపండి",bt:"ఇది బుక్ చేయండి",pr:"ధర కోసం అడగండి",mg:"⚙ మేనేజర్"},
+kn:{np:"ಪ್ಯಾಕೇಜ್‌ಗಳು",ns:"ಸೇವೆಗಳು",nb:"ಬುಕ್ಕಿಂಗ್",nc:"ಸಂಪರ್ಕ",vp:"ಪ್ಯಾಕೇಜ್ ನೋಡಿ",bn:"ಈಗಲೇ ಬುಕ್ ಮಾಡಿ",pt:"ಟೂರ್ ಪ್ಯಾಕೇಜ್‌ಗಳು",st:"ಸೇವೆಗಳು",bt2:"ಬುಕ್ಕಿಂಗ್ / ವಿಚಾರಣೆ",ct:"ಸಂಪರ್ಕ",sw:"WhatsApp ನಲ್ಲಿ ಕಳುಹಿಸಿ",bt:"ಇದನ್ನು ಬುಕ್ ಮಾಡಿ",pr:"ದರ ವಿಚಾರಿಸಿ",mg:"⚙ ಮ್ಯಾನೇಜರ್"},
+ta:{np:"தொகுப்புகள்",ns:"சேவைகள்",nb:"முன்பதிவு",nc:"தொடர்பு",vp:"தொகுப்புகளைப் பார்க்க",bn:"இப்போது முன்பதிவு",pt:"சுற்றுலா தொகுப்புகள்",st:"சேவைகள்",bt2:"முன்பதிவு / விசாரணை",ct:"தொடர்பு",sw:"WhatsApp இல் அனுப்பு",bt:"இதை முன்பதிவு செய்",pr:"விலை கேளுங்கள்",mg:"⚙ மேனேஜர்"},
+gu:{np:"પેકેજ",ns:"સેવાઓ",nb:"બુકિંગ",nc:"સંપર્ક",vp:"પેકેજ જુઓ",bn:"હમણાં બુક કરો",pt:"ટૂર પેકેજ",st:"સેવાઓ",bt2:"બુકિંગ / પૂછપરછ",ct:"સંપર્ક",sw:"WhatsApp પર મોકલો",bt:"આ બુક કરો",pr:"ભાવ પૂછો",mg:"⚙ મેનેજર"},
+mr:{np:"पॅकेजेस",ns:"सेवा",nb:"बुकिंग",nc:"संपर्क",vp:"पॅकेज पहा",bn:"आता बुक करा",pt:"टूर पॅकेजेस",st:"सेवा",bt2:"बुकिंग / चौकशी",ct:"संपर्क",sw:"WhatsApp वर पाठवा",bt:"हे बुक करा",pr:"किंमत विचारा",mg:"⚙ मॅनेजर"}};
+function A(l,o){TX[l]=Object.assign(TX[l]||{},o)}
+A("en",{h1:"Smart Travel from Shirdi, Powered by Precision",sub:"One-way cabs, round-trip tours, pilgrimage packages and hotels across Maharashtra. Pick a package and we confirm it on WhatsApp.",s1:"Hours support",s2:"Tour packages",s3:"Days a week",s4:"Direct phone lines",ln:"Your name",lp:"Phone",lk:"Package / service",ld:"Travel date",lq:"Passengers",lu:"Pickup place",lo:"Notes",v1:"One-way cab",v2:"1-day round trip",v3:"Multi-day tours",v4:"Hotels & stays",v5:"Call-back"});
+A("hi",{h1:"शिर्डी से स्मार्ट यात्रा, सटीकता के साथ",sub:"वन-वे कैब, राउंड-ट्रिप टूर, तीर्थ पैकेज और होटल, पूरे महाराष्ट्र में। पैकेज चुनें, हम WhatsApp पर पक्का करेंगे।",s1:"घंटे सहायता",s2:"टूर पैकेज",s3:"दिन प्रति सप्ताह",s4:"सीधी फोन लाइन",ln:"आपका नाम",lp:"फोन",lk:"पैकेज / सेवा",ld:"यात्रा की तारीख",lq:"यात्री",lu:"पिकअप स्थान",lo:"टिप्पणी",v1:"वन-वे कैब",v2:"1 दिन की राउंड ट्रिप",v3:"बहु-दिवसीय टूर",v4:"होटल और ठहराव",v5:"कॉल-बैक"});
+A("mr",{h1:"शिर्डीहून स्मार्ट प्रवास, अचूकतेसह",sub:"वन-वे कॅब, राउंड-ट्रिप टूर, तीर्थयात्रा पॅकेजेस आणि हॉटेल्स, संपूर्ण महाराष्ट्रात. पॅकेज निवडा, आम्ही WhatsApp वर निश्चित करू.",s1:"तास सहाय्य",s2:"टूर पॅकेजेस",s3:"दिवस दर आठवड्यात",s4:"थेट फोन लाईन",ln:"तुमचे नाव",lp:"फोन",lk:"पॅकेज / सेवा",ld:"प्रवासाची तारीख",lq:"प्रवासी",lu:"पिकअप ठिकाण",lo:"टिपणी",v1:"वन-वे कॅब",v2:"1 दिवसाची राउंड ट्रिप",v3:"बहुदिवसीय टूर",v4:"हॉटेल आणि मुक्काम",v5:"कॉल-बॅक"});
+A("gu",{h1:"શિરડીથી સ્માર્ટ મુસાફરી, ચોકસાઈ સાથે",sub:"વન-વે કેબ, રાઉન્ડ-ટ્રિપ ટૂર, યાત્રા પેકેજ અને હોટેલ, સમગ્ર મહારાષ્ટ્રમાં. પેકેજ પસંદ કરો, અમે WhatsApp પર પાક્કું કરીશું.",s1:"કલાક સહાય",s2:"ટૂર પેકેજ",s3:"દિવસ દર અઠવાડિયે",s4:"સીધી ફોન લાઇન",ln:"તમારું નામ",lp:"ફોન",lk:"પેકેજ / સેવા",ld:"મુસાફરીની તારીખ",lq:"મુસાફરો",lu:"પિકઅપ સ્થળ",lo:"નોંધ",v1:"વન-વે કેબ",v2:"1 દિવસની રાઉન્ડ ટ્રિપ",v3:"બહુ-દિવસીય ટૂર",v4:"હોટેલ અને રોકાણ",v5:"કૉલ-બેક"});
+A("te",{h1:"షిర్డీ నుండి స్మార్ట్ ప్రయాణం, కచ్చితత్వంతో",sub:"వన్-వే క్యాబ్‌లు, రౌండ్-ట్రిప్ టూర్లు, యాత్ర ప్యాకేజీలు మరియు హోటళ్లు, మహారాష్ట్ర అంతటా. ప్యాకేజీ ఎంచుకోండి, WhatsApp లో ధృవీకరిస్తాం.",s1:"గంటల సహాయం",s2:"టూర్ ప్యాకేజీలు",s3:"వారానికి రోజులు",s4:"నేరుగా ఫోన్ లైన్లు",ln:"మీ పేరు",lp:"ఫోన్",lk:"ప్యాకేజీ / సేవ",ld:"ప్రయాణ తేదీ",lq:"ప్రయాణికులు",lu:"పికప్ స్థలం",lo:"గమనికలు",v1:"వన్-వే క్యాబ్",v2:"1 రోజు రౌండ్ ట్రిప్",v3:"బహుళ రోజుల టూర్లు",v4:"హోటళ్లు & బస",v5:"కాల్-బ్యాక్"});
+A("kn",{h1:"ಶಿರಡಿಯಿಂದ ಸ್ಮಾರ್ಟ್ ಪ್ರಯಾಣ, ನಿಖರತೆಯೊಂದಿಗೆ",sub:"ಒನ್-ವೇ ಕ್ಯಾಬ್, ರೌಂಡ್-ಟ್ರಿಪ್ ಟೂರ್, ಯಾತ್ರಾ ಪ್ಯಾಕೇಜ್ ಮತ್ತು ಹೋಟೆಲ್, ಮಹಾರಾಷ್ಟ್ರದಾದ್ಯಂತ. ಪ್ಯಾಕೇಜ್ ಆರಿಸಿ, WhatsApp ನಲ್ಲಿ ಖಚಿತಪಡಿಸುತ್ತೇವೆ.",s1:"ಗಂಟೆ ಸಹಾಯ",s2:"ಟೂರ್ ಪ್ಯಾಕೇಜ್‌ಗಳು",s3:"ವಾರದ ದಿನಗಳು",s4:"ನೇರ ಫೋನ್ ಲೈನ್‌ಗಳು",ln:"ನಿಮ್ಮ ಹೆಸರು",lp:"ಫೋನ್",lk:"ಪ್ಯಾಕೇಜ್ / ಸೇವೆ",ld:"ಪ್ರಯಾಣ ದಿನಾಂಕ",lq:"ಪ್ರಯಾಣಿಕರು",lu:"ಪಿಕಪ್ ಸ್ಥಳ",lo:"ಟಿಪ್ಪಣಿ",v1:"ಒನ್-ವೇ ಕ್ಯಾಬ್",v2:"1 ದಿನದ ರೌಂಡ್ ಟ್ರಿಪ್",v3:"ಬಹು-ದಿನದ ಟೂರ್",v4:"ಹೋಟೆಲ್ ಮತ್ತು ವಾಸ್ತವ್ಯ",v5:"ಕಾಲ್-ಬ್ಯಾಕ್"});
+A("ta",{h1:"ஷிர்டியிலிருந்து ஸ்மார்ட் பயணம், துல்லியத்துடன்",sub:"ஒன்-வே கேப், ரவுண்ட்-டிரிப் சுற்றுலா, யாத்திரை தொகுப்புகள் மற்றும் ஹோட்டல்கள், மகாராஷ்டிரா முழுவதும். தொகுப்பைத் தேர்வு செய்யுங்கள், WhatsApp இல் உறுதி செய்வோம்.",s1:"மணி நேர உதவி",s2:"சுற்றுலா தொகுப்புகள்",s3:"வாரத்தில் நாட்கள்",s4:"நேரடி தொலைபேசி எண்கள்",ln:"உங்கள் பெயர்",lp:"தொலைபேசி",lk:"தொகுப்பு / சேவை",ld:"பயண தேதி",lq:"பயணிகள்",lu:"ஏற்றும் இடம்",lo:"குறிப்புகள்",v1:"ஒன்-வே கேப்",v2:"1 நாள் ரவுண்ட் டிரிப்",v3:"பல நாள் சுற்றுலா",v4:"ஹோட்டல் & தங்குமிடம்",v5:"கால்-பேக்"});
+A("bn",{np:"প্যাকেজ",ns:"সেবা",nb:"বুকিং",nc:"যোগাযোগ",vp:"প্যাকেজ দেখুন",bn:"এখনই বুক করুন",pt:"ট্যুর প্যাকেজ",st:"সেবা",bt2:"বুকিং / জিজ্ঞাসা",ct:"যোগাযোগ",sw:"WhatsApp-এ পাঠান",bt:"এটি বুক করুন",pr:"দাম জিজ্ঞাসা করুন",mg:"⚙ ম্যানেজার",h1:"শিরডি থেকে স্মার্ট ভ্রমণ, নির্ভুলতার সাথে",sub:"ওয়ান-ওয়ে ক্যাব, রাউন্ড-ট্রিপ ট্যুর, তীর্থ প্যাকেজ ও হোটেল, সারা মহারাষ্ট্রে। প্যাকেজ বেছে নিন, আমরা WhatsApp-এ নিশ্চিত করব।",s1:"ঘণ্টা সহায়তা",s2:"ট্যুর প্যাকেজ",s3:"সপ্তাহে দিন",s4:"সরাসরি ফোন লাইন",ln:"আপনার নাম",lp:"ফোন",lk:"প্যাকেজ / সেবা",ld:"ভ্রমণের তারিখ",lq:"যাত্রী",lu:"পিকআপ স্থান",lo:"মন্তব্য",v1:"ওয়ান-ওয়ে ক্যাব",v2:"১ দিনের রাউন্ড ট্রিপ",v3:"একাধিক দিনের ট্যুর",v4:"হোটেল ও থাকা",v5:"কল-ব্যাক"});
+A("ml",{np:"പാക്കേജുകൾ",ns:"സേവനങ്ങൾ",nb:"ബുക്കിംഗ്",nc:"ബന്ധപ്പെടുക",vp:"പാക്കേജുകൾ കാണുക",bn:"ഇപ്പോൾ ബുക്ക് ചെയ്യുക",pt:"ടൂർ പാക്കേജുകൾ",st:"സേവനങ്ങൾ",bt2:"ബുക്കിംഗ് / അന്വേഷണം",ct:"ബന്ധപ്പെടുക",sw:"WhatsApp ൽ അയയ്ക്കുക",bt:"ഇത് ബുക്ക് ചെയ്യുക",pr:"വില ചോദിക്കുക",mg:"⚙ മാനേജർ",h1:"ഷിർഡിയിൽ നിന്ന് സ്മാർട്ട് യാത്ര, കൃത്യതയോടെ",sub:"വൺ-വേ ക്യാബ്, റൗണ്ട്-ട്രിപ്പ് ടൂർ, തീർഥാടന പാക്കേജുകൾ, ഹോട്ടലുകൾ, മഹാരാഷ്ട്ര മുഴുവൻ. പാക്കേജ് തിരഞ്ഞെടുക്കൂ, WhatsApp ൽ ഉറപ്പാക്കാം.",s1:"മണിക്കൂർ സഹായം",s2:"ടൂർ പാക്കേജുകൾ",s3:"ആഴ്ചയിലെ ദിവസങ്ങൾ",s4:"നേരിട്ടുള്ള ഫോൺ ലൈനുകൾ",ln:"നിങ്ങളുടെ പേര്",lp:"ഫോൺ",lk:"പാക്കേജ് / സേവനം",ld:"യാത്രാ തീയതി",lq:"യാത്രക്കാർ",lu:"പിക്കപ്പ് സ്ഥലം",lo:"കുറിപ്പുകൾ",v1:"വൺ-വേ ക്യാബ്",v2:"1 ദിവസത്തെ റൗണ്ട് ട്രിപ്പ്",v3:"ഒന്നിലധികം ദിവസത്തെ ടൂർ",v4:"ഹോട്ടലും താമസവും",v5:"കോൾ-ബാക്ക്"});
+A("pa",{np:"ਪੈਕੇਜ",ns:"ਸੇਵਾਵਾਂ",nb:"ਬੁਕਿੰਗ",nc:"ਸੰਪਰਕ",vp:"ਪੈਕੇਜ ਵੇਖੋ",bn:"ਹੁਣੇ ਬੁੱਕ ਕਰੋ",pt:"ਟੂਰ ਪੈਕੇਜ",st:"ਸੇਵਾਵਾਂ",bt2:"ਬੁਕਿੰਗ / ਪੁੱਛਗਿੱਛ",ct:"ਸੰਪਰਕ",sw:"WhatsApp ਤੇ ਭੇਜੋ",bt:"ਇਹ ਬੁੱਕ ਕਰੋ",pr:"ਕੀਮਤ ਪੁੱਛੋ",mg:"⚙ ਮੈਨੇਜਰ",h1:"ਸ਼ਿਰਡੀ ਤੋਂ ਸਮਾਰਟ ਸਫ਼ਰ, ਸਟੀਕਤਾ ਨਾਲ",sub:"ਵਨ-ਵੇ ਕੈਬ, ਰਾਊਂਡ-ਟ੍ਰਿਪ ਟੂਰ, ਤੀਰਥ ਪੈਕੇਜ ਅਤੇ ਹੋਟਲ, ਪੂਰੇ ਮਹਾਰਾਸ਼ਟਰ ਵਿੱਚ। ਪੈਕੇਜ ਚੁਣੋ, ਅਸੀਂ WhatsApp ਤੇ ਪੱਕਾ ਕਰਾਂਗੇ।",s1:"ਘੰਟੇ ਸਹਾਇਤਾ",s2:"ਟੂਰ ਪੈਕੇਜ",s3:"ਹਫ਼ਤੇ ਦੇ ਦਿਨ",s4:"ਸਿੱਧੀਆਂ ਫ਼ੋਨ ਲਾਈਨਾਂ",ln:"ਤੁਹਾਡਾ ਨਾਂ",lp:"ਫ਼ੋਨ",lk:"ਪੈਕੇਜ / ਸੇਵਾ",ld:"ਸਫ਼ਰ ਦੀ ਤਾਰੀਖ਼",lq:"ਯਾਤਰੀ",lu:"ਪਿਕਅੱਪ ਥਾਂ",lo:"ਨੋਟ",v1:"ਵਨ-ਵੇ ਕੈਬ",v2:"1 ਦਿਨ ਦੀ ਰਾਊਂਡ ਟ੍ਰਿਪ",v3:"ਕਈ ਦਿਨਾਂ ਦੇ ਟੂਰ",v4:"ਹੋਟਲ ਅਤੇ ਠਹਿਰਾਅ",v5:"ਕਾਲ-ਬੈਕ"});
+A("or",{np:"ପ୍ୟାକେଜ",ns:"ସେବା",nb:"ବୁକିଂ",nc:"ଯୋଗାଯୋଗ",vp:"ପ୍ୟାକେଜ ଦେଖନ୍ତୁ",bn:"ଏବେ ବୁକ୍ କରନ୍ତୁ",pt:"ଟୁର ପ୍ୟାକେଜ",st:"ସେବା",bt2:"ବୁକିଂ / ପଚାରିବା",ct:"ଯୋଗାଯୋଗ",sw:"WhatsApp ରେ ପଠାନ୍ତୁ",bt:"ଏହା ବୁକ୍ କରନ୍ତୁ",pr:"ମୂଲ୍ୟ ପଚାରନ୍ତୁ",mg:"⚙ ମ୍ୟାନେଜର",h1:"ଶିର୍ଡିରୁ ସ୍ମାର୍ଟ ଯାତ୍ରା, ସଠିକତା ସହିତ",sub:"ୱାନ୍-ୱେ କ୍ୟାବ୍, ରାଉଣ୍ଡ-ଟ୍ରିପ୍ ଟୁର, ତୀର୍ଥ ପ୍ୟାକେଜ ଓ ହୋଟେଲ, ସମଗ୍ର ମହାରାଷ୍ଟ୍ରରେ। ପ୍ୟାକେଜ ବାଛନ୍ତୁ, ଆମେ WhatsApp ରେ ନିଶ୍ଚିତ କରିବୁ।",s1:"ଘଣ୍ଟା ସହାୟତା",s2:"ଟୁର ପ୍ୟାକେଜ",s3:"ସପ୍ତାହରେ ଦିନ",s4:"ସିଧା ଫୋନ୍ ଲାଇନ୍",ln:"ଆପଣଙ୍କ ନାମ",lp:"ଫୋନ୍",lk:"ପ୍ୟାକେଜ / ସେବା",ld:"ଯାତ୍ରା ତାରିଖ",lq:"ଯାତ୍ରୀ",lu:"ପିକଅପ୍ ସ୍ଥାନ",lo:"ଟିପ୍ପଣୀ",v1:"ୱାନ୍-ୱେ କ୍ୟାବ୍",v2:"୧ ଦିନର ରାଉଣ୍ଡ ଟ୍ରିପ୍",v3:"ବହୁ ଦିନର ଟୁର",v4:"ହୋଟେଲ ଓ ରହଣି",v5:"କଲ୍-ବ୍ୟାକ୍"});
+var LN=LS.g("jl_lang")||((navigator.language||"en").slice(0,2));if(!TX[LN])LN="en";
+var TRC={};try{TRC=JSON.parse(LS.g("jtr")||"{}")}catch(e){}
+async function trPk(){if(LN==="en")return;var m=TRC[LN]=TRC[LN]||{},need=P.map(function(x){return x.d}).filter(function(d){return!m[d]});if(!need.length)return;
+try{var sm=window.claude&&await claude.use("sample");if(!sm)return;var r=await sm.json("Translate each string in this JSON array into "+LGN[LN]+" for a travel company website. Keep place names and numbers. Return only a JSON array of the same length.\n"+JSON.stringify(need));
+if(Array.isArray(r)&&r.length===need.length){need.forEach(function(d,i){if(typeof r[i]==="string")m[d]=sani(r[i],500)});LS.s("jtr",JSON.stringify(TRC));render()}}catch(e){}}
+
+function T(k){return (TX[LN]&&TX[LN][k])||TX.en[k]}
+(function(){var g=$("lg");Object.keys(LGN).forEach(function(k){var o=document.createElement("option");o.value=k;o.textContent=LGN[k];g.appendChild(o)});g.value=LN;g.onchange=function(){LN=g.value;LS.s("jl_lang",LN);applyL();trPk();track("language",{lang:LN})}})();
+function applyL(){document.documentElement.lang=LN;document.querySelectorAll("[data-i]").forEach(function(e){e.textContent=T(e.dataset.i)});render()}
+/* ===== security ===== */
+function sani(v,n){return String(v==null?"":v).replace(/[<>\u0000-\u001f]/g," ").replace(/\s+/g," ").trim().slice(0,n||200)}
+function ea(v){return esc(v).replace(/"/g,"&quot;")}
+function hs(v){var x=5381;for(var i=0;i<v.length;i++)x=((x<<5)+x+v.charCodeAt(i))|0;return""+x}
+function slog(m){var a=[];try{a=JSON.parse(LS.g("jsl")||"[]")}catch(e){}a.unshift({t:Date.now(),m:m});LS.s("jsl",JSON.stringify(a.slice(0,60)))}
+var RL=[];function rl(){var n=Date.now();RL=RL.filter(function(t){return n-t<60000});if(RL.length>=3)return false;RL.push(n);return true}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")$("aip").classList.remove("on")});
+/* ===== ads & tracking ===== */
+var AT={};try{AT=JSON.parse(LS.g("jat")||"{}")}catch(e){}
+(function(){var q=new URLSearchParams(location.search),ch=false;["utm_source","utm_medium","utm_campaign","utm_term","utm_content","gclid","fbclid"].forEach(function(k){if(q.get(k)){AT[k]=sani(q.get(k),80);ch=true}});if(q.get("p")){AT.p=sani(q.get("p"),80);ch=true}if(ch)LS.s("jat",JSON.stringify(AT))})();
+function src(){return AT.utm_source||(AT.gclid?"google":AT.fbclid?"facebook":"direct")}
+var CFG={ga:SITE.ga,gads:SITE.gads,px:SITE.px};
+var adsOn=false;
+function initAds(){if(adsOn)return;var ga=/^(G|AW)-[A-Z0-9]{4,14}$/.test(CFG.ga)?CFG.ga:"",px=/^\d{8,20}$/.test(CFG.px)?CFG.px:"";if(!ga&&!px&&!CFG.gads)return;adsOn=true;
+window.dataLayer=window.dataLayer||[];
+if(ga){var sc=document.createElement("script");sc.async=true;sc.src="https://www.googletagmanager.com/gtag/js?id="+ga;document.head.appendChild(sc);window.gtag=function(){dataLayer.push(arguments)};gtag("js",new Date());gtag("config",ga);if(/^AW-\d+/.test(CFG.gads||""))gtag("config",CFG.gads.split("/")[0])}
+if(px){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init",px);fbq("track","PageView")}}
+function track(ev,par){par=Object.assign({source:src(),campaign:AT.utm_campaign||""},par||{});
+try{window.dataLayer=window.dataLayer||[];dataLayer.push(Object.assign({event:ev},par));
+if(window.gtag){gtag("event",ev,par);if(ev==="lead"&&/^AW-\d+\/.+/.test(CFG.gads||""))gtag("event","conversion",{send_to:CFG.gads})}
+if(window.fbq){fbq("trackCustom",ev,par);if(ev==="lead")fbq("track","Lead")}}catch(e){}
+var a=[];try{a=JSON.parse(LS.g("jev")||"[]")}catch(e){}a.unshift({t:Date.now(),ev:ev,s:par.source});LS.s("jev",JSON.stringify(a.slice(0,50)))}
+initAds();track("page_view");
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a)return;var h=a.getAttribute("href")||"";if(h.indexOf("tel:")===0)track("call_click");else if(h.indexOf("wa.me")>=0)track("whatsapp_click")});
+function addLead(o){o.id="L"+Date.now()+Math.floor(Math.random()*999);o.t=Date.now();o.src=src();o.camp=AT.utm_campaign||"";o.med=AT.utm_medium||"";o.click=AT.gclid?"gclid":AT.fbclid?"fbclid":"";
+var a=[];try{a=JSON.parse(LS.g("jld")||"[]")}catch(e){}a.unshift(o);LS.s("jld",JSON.stringify(a.slice(0,200)));
+sendLead(o);track("lead",{package:o.pkg||"",via:o.via})}
+/* ===== booking form (3 steps) + welcome + quick replies ===== */
+var BS=1,BCM="WhatsApp",BREF="";
+$("dt").min=new Date().toISOString().slice(0,10);
+(function(){var h=new Date().getHours();$("wg").textContent=(h<12?"Good morning":h<17?"Good afternoon":"Good evening")+"! 🙏 Welcome to Jeevan Tours & Travels"})();
+function bstep(n){BS=n;document.querySelectorAll(".stp").forEach(function(d){d.classList.toggle("on",+d.dataset.s===n)});document.querySelectorAll("#stp span").forEach(function(sp,i){sp.classList.toggle("on",i+1===n)});$("pb").style.width=(n*33.3)+"%";if(n===3)breview()}
+function breview(){var r=[["Package",$("s").value],["Date",$("dt").value||"Flexible"],["Passengers",$("pa").value],["Pickup",$("pk").value||"Shirdi"],["Name",$("n").value],["Phone",$("p").value],["Contact by",BCM],["Notes",$("nt").value||"-"]];
+$("rv").innerHTML="<b>Hi "+esc(sani($("n").value,40))+"! Please check your request</b>"+r.map(function(x){return'<div class="li"><small>'+x[0]+'</small><span style="text-align:right">'+esc(sani(x[1],120))+'</span></div>'}).join("")}
+function bval(n){if(n===1){var q=+$("pa").value;if(!(q>=1&&q<=60)){toast("Passengers: 1 to 60");return false}var d=$("dt").value;if(d&&d<$("dt").min){toast("Choose today or a later date");return false}return true}
+if(n===2){if(!sani($("n").value,60)){toast("Please enter your name");return false}if(!/^[+0-9][0-9 \-]{7,16}$/.test(sani($("p").value,18))){toast("Enter a valid phone number");return false}return true}return true}
+$("bf").onclick=function(e){var b=e.target.closest("button");if(!b)return;var d=b.dataset;
+if(d.nx){if(bval(BS))bstep(BS+1)}else if(d.bk)bstep(BS-1);
+else if(d.set){$(d.set).value=d.v;b.parentNode.querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===b)})}
+else if(d.cm){BCM=d.cm;b.parentNode.querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===b)})}
+else if(d.add){var t=$("nt"),v=d.add;if(t.value.indexOf(v)<0)t.value=(t.value?t.value+", ":"")+v}
+else if(d.q){var x=+$("pa").value||1;$("pa").value=Math.min(60,Math.max(1,x+(d.q==="+"?1:-1)))}};
+$("bf").onsubmit=function(e){e.preventDefault();
+if($("web").value){slog("Bot blocked (honeypot)");return}
+if(BS<3){if(bval(BS))bstep(BS+1);return}
+if(!bval(1)||!bval(2))return;
+if(!rl()){slog("Rate limit hit");toast("Too many requests. Wait a minute.");return}
+var n=sani($("n").value,60),p=sani($("p").value,18),pk=sani($("pk").value||"Shirdi",60);
+BREF="JT"+Date.now().toString(36).slice(-5).toUpperCase();
+var o={name:n,phone:p,pkg:sani($("s").value,80),date:$("dt").value,pax:sani($("pa").value,4),via:"form"};addLead(o);
+wa("Booking enquiry ("+BREF+")\nName: "+n+"\nPhone: "+p+" ("+BCM+" preferred)\nPackage: "+o.pkg+"\nDate: "+(o.date||"flexible")+"\nPassengers: "+o.pax+"\nPickup: "+pk+"\nNotes: "+sani($("nt").value,300)+"\nSource: "+src()+(AT.utm_campaign?" / "+AT.utm_campaign:""));
+$("bf").style.display="none";var k=$("ok");k.style.display="block";
+k.innerHTML='<h3 class="f" style="margin:0 0 6px;color:var(--c)">✅ Thank you, '+esc(n)+'! 🙏</h3><p style="margin:0 0 6px">Your request <b>'+BREF+'</b> for <b>'+esc(o.pkg)+'</b> is ready. WhatsApp has opened: please tap <b>Send</b> there so our team receives it. We will reply as soon as possible.</p><p class="sub" style="margin:0 0 8px">Quick replies:</p><div class="qc" id="qr">'+[["📞 Call me back","Please call me back on "+p],["💰 Send price details","Please send price details for "+o.pkg],["📅 Change my date","I want to change my travel date"],["🏨 Add hotel stay","Please add a hotel stay to my booking"],["🚗 Different vehicle","Please suggest a different vehicle"]].map(function(q,i){return'<button type="button" data-qr="'+i+'">'+q[0]+'</button>'}).join("")+'</div><div class="row" style="margin-top:14px"><a class="btn o" href="tel:+919511188188">📞 CALL NOW</a><button class="btn" type="button" id="nb">➕ NEW BOOKING</button></div>';
+k.dataset.m=JSON.stringify(["Please call me back on "+p,"Please send price details for "+o.pkg,"I want to change my travel date","Please add a hotel stay to my booking","Please suggest a different vehicle"]);
+k.scrollIntoView({behavior:"smooth",block:"center"});track("booking_submitted",{ref:BREF})};
+$("ok").onclick=function(e){var b=e.target.closest("button");if(!b)return;
+if(b.id==="nb"){$("ok").style.display="none";$("bf").style.display="block";$("bf").reset();BCM="WhatsApp";bstep(1);return}
+if(b.dataset.qr!=null){var m=JSON.parse($("ok").dataset.m||"[]");wa("Ref "+BREF+": "+m[+b.dataset.qr]);track("quick_reply",{reply:b.textContent})}};
+/* welcome bubble */
+(function(){var seen=false;try{seen=sessionStorage.getItem("jwb")}catch(e){}
+if(!seen)setTimeout(function(){$("wb").classList.add("on")},3000);
+$("wbx").onclick=function(e){e.stopPropagation();$("wb").classList.remove("on");try{sessionStorage.setItem("jwb","1")}catch(x){}};
+$("wb").onclick=function(){$("wb").classList.remove("on");try{sessionStorage.setItem("jwb","1")}catch(x){}$("aib").click()}})();
+/* services */
+document.querySelectorAll("[data-sv]").forEach(function(b){b.onclick=function(){var v=b.dataset.sv;$("ok").style.display="none";$("bf").style.display="block";track("service_click",{service:v});
+if(v==="ow"){$("s").value="One-way cab (custom route)";location.hash="book"}
+else if(v==="ht"||v==="cb"){$("s").value="Other / not sure";$("nt").value=v==="ht"?"Hotel stay enquiry":"Please call me back";location.hash="book"}
+else{cat=v;render();location.hash="packages"}}});
+/* ===== AI assistant ===== */
+var AI={st:"",d:{}};
+function ais(t,c){var d=document.createElement("div");d.className="m "+c;d.textContent=t;$("am").appendChild(d);$("am").scrollTop=1e9;return d}
+function aic(l){var c=$("ac");c.innerHTML="";l.forEach(function(x){var b=document.createElement("button");b.type="button";b.className="btn";b.textContent=x[0];b.onclick=function(){aiAsk(x[1]||x[0])};c.appendChild(b)})}
+function aiHome(){aic([["📝 Book with AI","book"],["Packages","packages"],["One-way cab","one-way"],["Hotels","hotel"],["Contact","contact"]])}
+$("aib").onclick=function(){var p=$("aip");p.classList.toggle("on");if(p.classList.contains("on")){track("ai_open");if(!$("am").children.length){ais("Namaste! 🙏 I'm the Jeevan Tours assistant. Ask about packages, one-way cabs or hotels, or tap Book with AI and I'll prepare your booking.","b");aiHome()}}};
+$("aix").onclick=function(){$("aip").classList.remove("on")};
+$("aif").onsubmit=function(e){e.preventDefault();var v=sani($("aiq").value,200);if(!v)return;$("aiq").value="";aiAsk(v)};
+async function aiAsk(v){v=sani(v,200);ais(v,"u");
+if(AI.st){aiFlow(v);return}
+var q=v.toLowerCase();
+if(/book|booking|reserve/.test(q)){AI.st="n";AI.d={};ais("Great! What is your name?","b");aic([]);return}
+if(/package|tour|yatra|trip/.test(q)){ais("Our packages: "+P.slice(0,8).map(function(x){return x.n}).join(", ")+". Scroll to Packages and tap Book this on any of them.","b");aiHome();return}
+if(/one.?way|drop|cab|taxi/.test(q)){ais("One-way drops from Shirdi go to Pune (~190 km), Mumbai (~250 km), Nashik (~90 km), Sambhajinagar (~110 km) and more. Tell me your route and date for a quote.","b");aiHome();return}
+if(/hotel|stay|room/.test(q)){ais("We arrange hotels in Shirdi and in the destinations you visit. Tap the Hotels card under Services to enquire.","b");aiHome();return}
+if(/call|phone|contact|number|address|where/.test(q)){ais("Call +91 95111 88188 or +91 90966 90947. We are at Pimpalwadi Road, opposite VIP Gate No. 2 of Sai Baba Temple, Shirdi.","b");aiHome();return}
+if(/price|rate|cost|fare|charge/.test(q)){ais("Rates depend on route, vehicle and dates. Share your trip details and we will send an exact quote on WhatsApp.","b");aic([["📝 Book with AI","book"],["Contact","contact"]]);return}
+var w=ais("…","b");
+try{var sm=window.claude&&await claude.use("sample");if(!sm)throw 0;
+var r=await sm("You are the assistant for Jeevan Tours & Travels, Shirdi (cabs, one-way drops, tour packages, hotels). Packages: "+P.map(function(x){return x.n}).join("; ")+". Phones: +91 95111 88188, +91 90966 90947. Never invent prices or promises. If unsure, tell the customer to call. Reply in "+LGN[LN]+" in under 60 words.\nCustomer: "+v,{cache:false});w.textContent=r.text||"Please call +91 95111 88188."}
+catch(e){w.textContent="I can help with packages, one-way cabs, hotels and booking. For anything else please call +91 95111 88188."}
+aiHome()}
+function aiFlow(v){var s=AI.st;
+if(s==="n"){AI.d.name=v;AI.st="p";ais("Thanks "+v+". Your phone number?","b")}
+else if(s==="p"){if(!/^[+0-9][0-9 \-]{7,16}$/.test(v)){ais("That doesn't look like a phone number. Please try again.","b");return}AI.d.phone=v;AI.st="k";ais("Which package or service?","b");aic(P.slice(0,5).map(function(x){return[x.n]}).concat([["One-way cab"]]))}
+else if(s==="k"){AI.d.pkg=v;AI.st="";aic([]);if(!rl()){ais("Too many requests. Please wait a minute.","b");aiHome();return}
+var o={name:AI.d.name,phone:AI.d.phone,pkg:v,via:"ai"};addLead(o);ais("Done! Opening WhatsApp so you can send your booking request.","b");wa("Booking enquiry (via AI assistant)\nName: "+o.name+"\nPhone: "+o.phone+"\nPackage: "+v+"\nSource: "+src()+(AT.utm_campaign?" / "+AT.utm_campaign:""));aiHome()}}
+/* auto: typewriter, count-up, nav highlight */
+var TL=["Cab drops. Pilgrimage tours. Hotel stays.","Booked and confirmed on WhatsApp.","Clean cars. Trusted drivers. 24x7 support."],ti=0,ci=0,del=false;
+(function tick(){var t=TL[ti],el=$("type");el.textContent=t.slice(0,ci);if(!del&&ci<t.length){ci++;setTimeout(tick,55)}else if(!del){del=true;setTimeout(tick,1400)}else if(ci>0){ci--;setTimeout(tick,25)}else{del=false;ti=(ti+1)%TL.length;setTimeout(tick,300)}})();
+function count(){document.querySelectorAll("[data-n]").forEach(function(e){var to=+e.dataset.n,v=0,st=Math.max(1,Math.ceil(to/30));var iv=setInterval(function(){v=Math.min(to,v+st);e.textContent=v;if(v>=to)clearInterval(iv)},35)})}
+setTimeout(count,400);
+var secs=["packages","services","book","contact"];
+window.addEventListener("scroll",function(){var cur="";secs.forEach(function(s){var r=$(s).getBoundingClientRect();if(r.top<160)cur=s});document.querySelectorAll("#lk a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+cur)})},{passive:true});
+/* init: packages from settings, packages.json, or defaults */
+function clean(x,i){return{id:sani(x.id,40)||"p"+i,n:sani(x.n,80),c:sani(x.c,40)||"Tours",d:sani(x.d,400),i:(/^data:image\/(jpeg|webp|png);base64,[A-Za-z0-9+\/=]+$/.test(x.i||"")&&x.i.length<150000)||/^images\/[\w.\-]+\.(jpe?g|webp|png)$/.test(x.i||"")?x.i:"",p:sani(x.p,12),t:sani(x.t,20),h:sani(x.h,200),b:sani(x.b,12)}}
+function preselect(){var q=AT.p;if(q){var f=P.filter(function(x){return x.id===q||x.n.toLowerCase().replace(/[^a-z0-9]+/g,"-")===q})[0];if(f)$("s").value=f.n}}
+var hasS=Array.isArray(SITE.packages)&&SITE.packages.length;
+P=(hasS?SITE.packages.map(clean):DEF).slice();applyL();preselect();
+if(!hasS){try{fetch("packages.json",{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){if(Array.isArray(j)&&j.length){P=j.map(clean).filter(function(x){return x.n});render();preselect()}}).catch(function(){})}catch(e){}}
+function callNow(n){var u="tel:"+n,done=false;
+try{window.top.location.href=u;done=true}catch(x){}
+if(!done){try{var a=document.createElement("a");a.href=u;a.target="_top";a.rel="noopener";document.body.appendChild(a);a.click();a.remove();done=true}catch(x){}}
+if(!done){try{window.open(u,"_top")}catch(x){}}
+toast("📞 Calling "+n)}
+document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href^='tel:']");if(!a)return;e.preventDefault();callNow(a.getAttribute("href").slice(4))});
+document.querySelectorAll("a[href^='tel:']").forEach(function(a){a.target="_top"});
+</script></body></html>
